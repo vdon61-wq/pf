@@ -1,0 +1,2167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="description" content="Free crypto portfolio risk analyzer. Calculate risk score for your cryptocurrency portfolio with detailed breakdown and recommendations.">
+<meta name="keywords" content="crypto portfolio, risk analysis, cryptocurrency risk, portfolio calculator, crypto risk score">
+<meta name="author" content="Crypto Portfolio Risk Analyzer">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="theme-color" content="#020617">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:title" content="Crypto Portfolio Risk Analyzer">
+<meta property="og:description" content="Calculate and analyze the risk level of your cryptocurrency portfolio.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>Crypto Portfolio Risk Analyzer</title>
+<!-- ===== Legal Copyright Notice ===== -->
+<!--
+  © 2026 Crypto Portfolio Risk Analyzer. All rights reserved.
+  This web service, its source code, design and content are protected
+  by copyright law. Copying, distribution, modification or commercial use
+  without the prior written permission of the rights holder is prohibited.
+  Terms of use: https://cryptonews.website/disclaimer
+-->
+
+<!-- ===== Copyright meta tags ===== -->
+<meta name="copyright" content="© 2026 Crypto Portfolio Risk Analyzer. All rights reserved.">
+<meta name="publisher" content="Crypto Portfolio Risk Analyzer">
+<meta name="owner" content="Crypto Portfolio Risk Analyzer">
+<meta name="web_author" content="Crypto Portfolio Risk Analyzer">
+
+<!-- ===== Dublin Core rights metadata ===== -->
+<meta name="DC.title" content="Crypto Portfolio Risk Analyzer">
+<meta name="DC.creator" content="Crypto Portfolio Risk Analyzer">
+<meta name="DC.publisher" content="Crypto Portfolio Risk Analyzer">
+<meta name="DC.rights" content="© 2026 Crypto Portfolio Risk Analyzer. All rights reserved.">
+<meta name="DC.rights.holder" content="Crypto Portfolio Risk Analyzer">
+<meta name="DCTERMS.dateCopyrighted" content="2026">
+<meta name="DCTERMS.license" content="https://cryptonews.website/disclaimer">
+
+<!-- ===== License reference ===== -->
+<link rel="license" href="https://cryptonews.website/disclaimer">
+
+<!-- ===== JSON-LD: machine-readable rights declaration (Schema.org) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Crypto Portfolio Risk Analyzer",
+  "alternateName": "Crypto Portfolio Risk Calculator",
+  "url": "https://cryptonews.website/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "inLanguage": ["en", "ru"],
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "copyrightNotice": "© 2026 Crypto Portfolio Risk Analyzer. All rights reserved.",
+  "license": "https://cryptonews.website/disclaimer",
+  "termsOfService": "https://cryptonews.website/disclaimer",
+  "copyrightHolder": {
+    "@type": "Organization",
+    "name": "Crypto Portfolio Risk Analyzer",
+    "url": "https://cryptonews.website/",
+    "sameAs": [
+      "https://x.com/cryptonewsweb",
+      "https://www.threads.com/@cryptonewsweb",
+      "https://vk.ru/cryptonews.website",
+      "https://t.me/cryptonewsweb"
+    ]
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Crypto Portfolio Risk Analyzer"
+  },
+  "datePublished": "2026-08-01"
+}
+</script>
+
+<!-- ===== Optional: opt-out of AI training on this content ===== -->
+<meta name="noai" content="true">
+<meta name="noimageai" content="true">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5/700.css">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+--bg:#020617;--card:#0f172a;--input:#1e293b;--bdr:#334155;
+--t1:#f1f5f9;--t2:#cbd5e1;--t3:#94a3b8;--acc:#3b82f6;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+background:var(--bg);color:var(--t1);margin:0;padding:0;
+min-height:100vh;min-height:100dvh;
+-webkit-user-select:none;-moz-user-select:none;user-select:none;
+overflow-x:hidden;
+}
+body::before{
+content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
+background:
+radial-gradient(700px 460px at 88% -8%,rgba(59,130,246,.13),transparent 62%),
+radial-gradient(560px 420px at -8% 34%,rgba(16,185,129,.07),transparent 60%),
+radial-gradient(760px 520px at 55% 112%,rgba(234,179,8,.05),transparent 62%);
+}
+body::after{
+content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+background-image:linear-gradient(rgba(148,163,184,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.045) 1px,transparent 1px);
+background-size:46px 46px;
+-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 78%);
+mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 78%);
+}
+h1,h2,h3{font-family:'Unbounded','Inter',system-ui,sans-serif;letter-spacing:.005em}
+#rs{font-family:'Unbounded','Inter',sans-serif;letter-spacing:-.01em}
+input,textarea,select{-webkit-user-select:text;user-select:text;font-family:inherit}
+button{font-family:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slideIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.12);opacity:.7}}
+.fade-in{animation:fadeIn .4s ease-out both}
+.slide-in{animation:slideIn .2s ease-out both}
+.gauge-track{background:linear-gradient(to right,#22c55e 0% 20%,#eab308 20% 40%,#f97316 40% 60%,#ef4444 60% 80%,#dc2626 80% 100%)}
+.spinner{width:40px;height:40px;border:3px solid rgba(139,92,246,.2);border-top-color:#8b5cf6;border-radius:50%;animation:spin .8s linear infinite}
+.scroll-y{scrollbar-width:thin;scrollbar-color:#334155 #1e293b;-webkit-overflow-scrolling:touch}
+.scroll-y::-webkit-scrollbar{width:6px;height:6px}
+.scroll-y::-webkit-scrollbar-track{background:#1e293b}
+.scroll-y::-webkit-scrollbar-thumb{background:#334155;border-radius:3px}
+.badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px;font-size:.65rem;font-weight:600;white-space:nowrap;line-height:1.3}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:9999px;font-size:.7rem;font-weight:600;white-space:nowrap;line-height:1.3}
+.risk-dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
+.rvb{background:rgba(34,197,94,.15);color:#86efac}
+.rlo{background:rgba(234,179,8,.15);color:#fde047}
+.rme{background:rgba(249,115,22,.15);color:#fdba74}
+.rhi{background:rgba(239,68,68,.15);color:#fca5a5}
+.cat-sov{background:rgba(234,179,8,.15);color:#fde047}
+.cat-sm{background:rgba(59,130,246,.15);color:#93c5fd}
+.cat-me{background:rgba(236,72,153,.15);color:#f9a8d4}
+.cat-de{background:rgba(168,85,247,.15);color:#d8b4fe}
+.cat-pa{background:rgba(34,197,94,.15);color:#86efac}
+.cat-ex{background:rgba(6,182,212,.15);color:#67e8f9}
+.cat-or{background:rgba(99,102,241,.15);color:#a5b4fc}
+.cat-in{background:rgba(20,184,166,.15);color:#5eead4}
+.cat-ga{background:rgba(249,115,22,.15);color:#fdba74}
+.cat-pr{background:rgba(107,114,128,.2);color:#d1d5db}
+.cat-l2{background:rgba(14,165,233,.15);color:#7dd3fc}
+.cat-ai{background:rgba(139,92,246,.15);color:#c4b5fd}
+.cat-rw{background:rgba(16,185,129,.15);color:#6ee7b7}
+.cat-dp{background:rgba(132,204,22,.15);color:#bef264}
+.cat-st{background:rgba(245,158,11,.15);color:#fcd34d}
+.cat-if{background:rgba(71,85,105,.3);color:#cbd5e1}
+.cat-sb{background:rgba(34,197,94,.15);color:#86efac}
+.vol-lo{background:rgba(34,197,94,.15);color:#86efac}
+.vol-md{background:rgba(234,179,8,.15);color:#fde047}
+.vol-hi{background:rgba(249,115,22,.15);color:#fdba74}
+.vol-vh{background:rgba(239,68,68,.15);color:#fca5a5}
+.mc-lg{background:rgba(59,130,246,.15);color:#93c5fd}
+.mc-md{background:rgba(139,92,246,.15);color:#c4b5fd}
+.mc-sm{background:rgba(236,72,153,.15);color:#f9a8d4}
+.ag-vh{background:rgba(234,179,8,.15);color:#fde047}
+.ag-hi{background:rgba(34,197,94,.15);color:#86efac}
+.ag-md{background:rgba(59,130,246,.15);color:#93c5fd}
+.ag-lo{background:rgba(239,68,68,.15);color:#fca5a5}
+.tab{display:none}
+.tab.active{display:block}
+.sidebar{
+position:fixed;top:0;left:0;width:min(300px,85vw);
+height:100vh;height:100dvh;
+background:var(--card);border-right:1px solid var(--bdr);
+z-index:1000;transform:translateX(-100%);transition:transform .3s;
+overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+.sidebar.open{transform:translateX(0)}
+.sb-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;
+opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.sb-overlay.open{opacity:1;pointer-events:auto}
+.menu-btn{
+position:fixed;top:12px;left:12px;width:44px;height:44px;
+border-radius:10px;background:var(--card);border:1px solid var(--bdr);
+color:var(--t1);display:flex;align-items:center;justify-content:center;
+z-index:998;transition:all .2s;
+}
+.menu-btn:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)}
+.top-bar{
+position:fixed;top:12px;right:12px;display:flex;gap:8px;z-index:998;
+align-items:center;
+}
+.lang-sw{
+display:flex;align-items:center;gap:4px;padding:4px;
+background:rgba(30,41,59,.85);border:1px solid var(--bdr);
+border-radius:10px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.lang-btn{
+width:32px;height:28px;border-radius:6px;background:transparent;
+border:none;padding:0;display:flex;align-items:center;justify-content:center;
+cursor:pointer;transition:all .2s;
+}
+.lang-btn:hover{background:rgba(59,130,246,.1)}
+.lang-btn.active{background:rgba(59,130,246,.2);box-shadow:0 0 0 1px rgba(59,130,246,.5)}
+.lang-btn svg{width:22px;height:16px;border-radius:2px;overflow:hidden}
+.sb-item{
+display:flex;align-items:center;gap:12px;padding:14px 16px;
+border-radius:8px;color:var(--t2);cursor:pointer;transition:all .2s;
+margin-bottom:4px;min-height:48px;border:none;background:transparent;
+width:100%;text-align:left;font-size:.9rem;
+}
+.sb-item:hover{background:rgba(59,130,246,.1);color:var(--t1)}
+.sb-item.active{background:rgba(59,130,246,.15);color:#60a5fa}
+.sb-item svg{width:18px;height:18px;flex-shrink:0}
+.c-btn{
+display:inline-flex;align-items:center;justify-content:center;gap:6px;
+padding:10px 16px;background:rgba(59,130,246,.15);
+border:1px solid rgba(59,130,246,.3);border-radius:10px;
+color:#93c5fd;font-size:.85rem;font-weight:600;
+cursor:pointer;transition:all .2s;text-decoration:none;
+min-height:40px;
+}
+.c-btn:hover{background:rgba(59,130,246,.25);border-color:rgba(59,130,246,.5);color:#fff}
+.tpl-sec{margin-bottom:16px;border:1px solid var(--bdr);border-radius:12px;background:rgba(30,41,59,.3);overflow:hidden}
+.tpl-toggle{
+width:100%;padding:12px 14px;background:transparent;border:none;
+color:var(--t2);font-size:.85rem;font-weight:600;
+display:flex;align-items:center;justify-content:space-between;
+transition:background .15s;min-height:48px;
+}
+.tpl-toggle:hover{background:rgba(59,130,246,.08)}
+.tpl-toggle .tl{display:flex;align-items:center;gap:8px}
+.tpl-toggle .tl svg{width:14px;height:14px;color:var(--acc)}
+.tpl-toggle .chev{width:16px;height:16px;transition:transform .25s;color:var(--t3)}
+.tpl-sec.open .tpl-toggle .chev{transform:rotate(180deg)}
+.tpl-content{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.tpl-sec.open .tpl-content{max-height:600px}
+.tpl-inner{padding:0 12px 12px}
+.tpl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.tpl-card{
+padding:12px;background:rgba(30,41,59,.6);border:1px solid var(--bdr);
+border-radius:10px;cursor:pointer;transition:all .2s;
+text-align:left;min-height:60px;
+}
+.tpl-card:hover{background:rgba(59,130,246,.1);border-color:var(--acc);transform:translateY(-1px)}
+.tpl-name{font-size:.85rem;font-weight:600;color:var(--t1);margin-bottom:2px}
+.tpl-desc{font-size:.7rem;color:var(--t3)}
+.counter{
+display:inline-flex;align-items:center;gap:4px;font-size:.75rem;
+color:var(--t3);padding:4px 10px;background:rgba(30,41,59,.5);
+border-radius:9999px;margin-left:8px;
+}
+.counter .c{color:var(--acc);font-weight:600}
+.coin-cnt{font-size:.68rem;padding:2px 8px;border-radius:9999px;background:rgba(59,130,246,.15);color:#60a5fa;font-weight:600}
+.combo-wrap{position:relative;isolation:isolate}
+.combo-trig{
+display:flex;align-items:center;gap:8px;
+background:#0f172a;border:1px solid #475569;border-radius:8px;
+padding:10px 12px;cursor:pointer;transition:border-color .15s;
+min-height:48px;flex-wrap:wrap;width:100%;
+}
+.combo-trig:hover{border-color:#64748b}
+.combo-dd{
+position:absolute;left:0;right:0;top:calc(100% + 4px);
+background:#1e293b;border:1px solid #475569;border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:50;
+display:none;overflow:hidden;
+}
+.combo-dd.open{display:block}
+.dd-search{
+width:100%;background:#0f172a;border:none;border-bottom:1px solid #475569;
+padding:10px 12px;color:var(--t1);font-size:.875rem;outline:none;
+}
+.dd-list{max-height:280px;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:4px}
+.dd-item{
+display:flex;align-items:center;gap:10px;padding:8px 10px;
+border-radius:6px;cursor:pointer;transition:background .12s;
+}
+.dd-item:hover{background:#334155}
+.alloc-wrap{position:relative;width:100%}
+.alloc-input{
+width:100%;background:#0f172a;border:1px solid #475569;
+border-radius:8px;padding:10px 44px 10px 12px;
+color:var(--t1);font-size:.9rem;outline:none;min-height:48px;
+-moz-appearance:textfield;
+}
+.alloc-input:focus{border-color:var(--acc)}
+.alloc-input::-webkit-outer-spin-button,
+.alloc-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.alloc-trig{
+position:absolute;right:2px;top:50%;transform:translateY(-50%);
+width:36px;height:calc(100% - 4px);display:flex;align-items:center;
+justify-content:center;color:var(--t3);border-left:1px solid #475569;
+border-top-right-radius:8px;border-bottom-right-radius:8px;
+cursor:pointer;background:transparent;border-top:none;border-bottom:none;border-right:none;
+transition:all .15s;
+}
+.alloc-trig:hover{color:var(--t1);background:rgba(51,65,85,.4)}
+.alloc-trig.open{color:var(--acc);background:rgba(59,130,246,.1)}
+.alloc-menu{
+position:absolute;top:calc(100% + 4px);right:0;min-width:120px;
+max-height:240px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+background:#1e293b;border:1px solid #475569;border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:60;padding:4px;
+display:none;
+}
+.alloc-menu.open{display:block}
+.alloc-p{
+display:flex;align-items:center;justify-content:space-between;
+padding:10px 12px;border-radius:6px;cursor:pointer;
+color:var(--t1);font-size:.875rem;font-weight:500;
+transition:background .12s;min-height:40px;
+}
+.alloc-p:hover{background:#334155}
+.alloc-p.sel{background:rgba(59,130,246,.15);color:#60a5fa}
+.alloc-p .chk{opacity:0;color:#60a5fa}
+.alloc-p.sel .chk{opacity:1}
+.alloc-hint{padding:6px 10px 8px;font-size:.65rem;color:var(--t3);border-top:1px solid #475569;margin-top:2px}
+.rm-btn{
+position:absolute;top:-8px;right:-8px;width:34px;height:34px;
+border-radius:50%;background:#1e293b;border:1px solid #475569;
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;transition:all .2s;z-index:10;
+box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.rm-btn:hover{background:#ef4444;border-color:#ef4444}
+.rm-btn:hover svg{stroke:#fff}
+.br-row{position:relative}
+.bl-wrap{position:relative;display:inline-flex;align-items:center;gap:4px}
+.i-btn{
+display:inline-flex;align-items:center;justify-content:center;
+width:18px;height:18px;border-radius:50%;background:transparent;
+border:none;color:var(--t3);cursor:pointer;transition:all .15s;padding:0;flex-shrink:0;
+}
+.i-btn:hover,.i-btn.active{color:var(--acc);background:rgba(59,130,246,.1)}
+.i-btn svg{width:14px;height:14px}
+.g-tip{
+position:fixed;left:0;top:0;z-index:5000;
+min-width:160px;max-width:min(280px,calc(100vw - 20px));
+background:#1e293b;border:1px solid #475569;border-radius:10px;
+padding:10px 12px;font-size:.75rem;line-height:1.45;color:var(--t2);
+box-shadow:0 12px 32px rgba(0,0,0,.55);
+opacity:0;pointer-events:none;transform:translateY(6px);
+transition:opacity .18s ease,transform .18s ease;white-space:normal;
+}
+.g-tip.below{transform:translateY(-6px)}
+.g-tip.show{opacity:1;transform:translateY(0)}
+.g-tip-t{font-weight:600;color:var(--t1);margin-bottom:4px;font-size:.78rem}
+.g-tip::after{
+content:'';position:absolute;top:100%;left:var(--ax,50%);
+transform:translateX(-50%);border:6px solid transparent;
+border-top-color:#1e293b;
+}
+.g-tip.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:#1e293b}
+.ss-cta{
+display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+padding:12px 20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);
+color:#fff;border:1px solid rgba(139,92,246,.4);border-radius:12px;
+font-size:.9rem;font-weight:600;cursor:pointer;transition:all .2s;
+box-shadow:0 4px 14px rgba(139,92,246,.3);min-height:44px;
+}
+.ss-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(139,92,246,.45)}
+.ss-cta:active{transform:translateY(0)}
+.ss-cta svg{width:16px;height:16px}
+.ss-wrap{position:relative;display:inline-block}
+.ss-tip{
+position:absolute;bottom:calc(100% + 10px);left:50%;
+transform:translateX(-50%) translateY(4px);
+background:#1e293b;border:1px solid var(--bdr);border-radius:8px;
+padding:6px 10px;font-size:.72rem;color:var(--t2);
+white-space:nowrap;opacity:0;pointer-events:none;
+transition:opacity .2s,transform .2s;z-index:20;
+}
+.ss-tip::after{
+content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+border:5px solid transparent;border-top-color:#1e293b;
+}
+.ss-wrap:hover .ss-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.summary-sec{margin-top:20px;padding-top:20px;border-top:1px solid rgba(51,65,85,.5)}
+.summary-h{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.summary-h svg{width:16px;height:16px;color:var(--acc)}
+.summary-h .t{font-size:.9rem;font-weight:600;color:var(--t1)}
+.summary-h .ct{font-size:.7rem;color:var(--t3);padding:2px 8px;background:rgba(59,130,246,.1);border-radius:9999px}
+.s-table{
+width:100%;border-collapse:separate;border-spacing:0;
+font-size:.78rem;border:1px solid var(--bdr);border-radius:10px;overflow:hidden;
+}
+.s-table thead{background:rgba(30,41,59,.8)}
+.s-table th{
+padding:8px 10px;text-align:left;font-weight:600;
+color:var(--t3);font-size:.65rem;text-transform:uppercase;
+letter-spacing:.05em;border-bottom:1px solid var(--bdr);white-space:nowrap;
+}
+.s-table td{
+padding:10px;color:var(--t2);border-bottom:1px solid rgba(51,65,85,.3);
+vertical-align:middle;
+}
+.s-table tbody tr:last-child td{border-bottom:none}
+.s-table tbody tr:hover{background:rgba(30,41,59,.5)}
+.s-table .sym{font-weight:700;color:var(--t1);font-size:.82rem}
+.s-table .nm{color:var(--t3);font-size:.72rem}
+.s-table .al{font-weight:700;color:var(--acc);font-size:.82rem}
+.disc{
+background:rgba(234,179,8,.05);border:1px solid rgba(234,179,8,.2);
+border-radius:12px;padding:16px;margin-top:24px;
+font-size:.8rem;line-height:1.6;color:var(--t2);
+}
+.disc-t{font-weight:700;color:#fbbf24;margin-bottom:8px;font-size:.9rem;display:flex;align-items:center;gap:6px}
+.rm-more{
+display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+padding:8px 14px;background:rgba(251,191,36,.1);
+border:1px solid rgba(251,191,36,.3);border-radius:8px;
+color:#fbbf24;font-size:.8rem;font-weight:600;cursor:pointer;
+transition:all .2s;min-height:36px;
+}
+.rm-more:hover{background:rgba(251,191,36,.2);border-color:rgba(251,191,36,.5);transform:translateX(2px)}
+.about-sec{
+background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.08));
+border:1px solid rgba(59,130,246,.2);border-radius:16px;
+padding:20px;margin-top:24px;
+}
+.about-t{font-size:1.2rem;font-weight:700;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.about-c p{margin-bottom:12px;line-height:1.7;color:var(--t2)}
+.about-c h4{color:var(--t1);font-weight:600;margin:16px 0 8px;font-size:1rem}
+.about-c ul{list-style:none;padding:0;margin:0 0 12px}
+.about-c ul li{padding:6px 0 6px 24px;position:relative;color:var(--t2);line-height:1.6}
+.about-c ul li::before{content:'✓';position:absolute;left:0;color:#10b981;font-weight:bold}
+.modal{
+position:fixed;inset:0;background:rgba(2,6,23,.9);
+backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+display:none;align-items:center;justify-content:center;
+z-index:9999;padding:16px;overflow-y:auto;
+}
+.modal.active{display:flex;animation:fadeIn .2s ease-out}
+.modal-c{
+background:var(--card);border:1px solid var(--bdr);
+border-radius:16px;padding:20px;max-width:500px;
+width:100%;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);
+overflow-y:auto;position:relative;-webkit-overflow-scrolling:touch;
+}
+.modal-c img{width:100%;border-radius:8px;border:1px solid var(--bdr)}
+.close-btn{
+position:absolute;top:12px;right:12px;width:36px;height:36px;
+border-radius:50%;background:var(--input);border:1px solid var(--bdr);
+color:var(--t3);display:flex;align-items:center;justify-content:center;
+cursor:pointer;transition:all .2s;z-index:2;
+}
+.close-btn:hover{background:#ef4444;color:#fff;border-color:#ef4444}
+.cf{display:flex;flex-direction:column;gap:14px}
+.cf-f{display:flex;flex-direction:column;gap:6px}
+.cf-f label{font-size:.85rem;font-weight:600;color:var(--t2)}
+.cf-f .req{color:#ef4444}
+.cf-f input,.cf-f textarea,.cf-f select{
+background:var(--input);border:1px solid var(--bdr);border-radius:8px;
+padding:12px;color:var(--t1);font-size:1rem;
+transition:all .2s;width:100%;min-height:44px;
+-webkit-appearance:none;appearance:none;
+}
+.cf-f input:focus,.cf-f textarea:focus,.cf-f select:focus{
+outline:none;border-color:var(--acc);background:rgba(59,130,246,.05);
+}
+.cf-f textarea{resize:vertical;min-height:110px}
+.cf-f select{
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;cursor:pointer;
+}
+.cf-f select option{background:#1e293b;color:#f1f5f9}
+.cf-sub{
+display:flex;align-items:center;justify-content:center;gap:8px;
+padding:14px 20px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+color:#fff;border:none;border-radius:10px;font-size:.95rem;
+font-weight:600;cursor:pointer;transition:all .2s;margin-top:8px;
+min-height:48px;width:100%;
+}
+.cf-sub:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(59,130,246,.4)}
+.cf-sub:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.copy-btn{
+display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
+border-radius:8px;background:var(--input);border:1px solid var(--bdr);
+color:var(--t3);cursor:pointer;font-size:.8rem;font-weight:500;
+transition:all .2s;min-height:36px;
+}
+.copy-btn:hover{color:var(--t1);border-color:var(--acc);background:rgba(59,130,246,.1)}
+.copy-btn svg{width:14px;height:14px}
+.copy-btn.copied{background:#10b981!important;color:#fff!important;border-color:#10b981!important}
+.toast{
+position:fixed;bottom:24px;left:50%;
+transform:translateX(-50%) translateY(100px);
+background:var(--card);border:1px solid var(--bdr);border-radius:12px;
+padding:12px 20px;color:var(--t1);font-size:.85rem;font-weight:500;
+box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:10000;opacity:0;
+transition:all .3s;display:flex;align-items:center;gap:8px;
+max-width:calc(100vw - 32px);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{border-color:#10b981}
+.toast.error{border-color:#ef4444}
+.toast.info{border-color:#3b82f6}
+.aa-search{position:relative}
+.aa-search input{
+width:100%;background:var(--input);border:1px solid var(--bdr);
+border-radius:10px;padding:12px 12px 12px 44px;
+color:var(--t1);font-size:1rem;transition:all .2s;min-height:48px;
+}
+.aa-search input:focus{outline:none;border-color:var(--acc)}
+.aa-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--t3);pointer-events:none}
+.f-panel{max-height:0;overflow:hidden;transition:max-height .35s,margin .3s;margin-top:0}
+.f-panel.open{max-height:500px;margin-top:14px}
+.f-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.f-chip{
+padding:8px 14px;background:var(--input);border:1px solid var(--bdr);
+border-radius:9999px;font-size:.8rem;font-weight:500;
+color:var(--t2);cursor:pointer;transition:all .2s;
+white-space:nowrap;min-height:36px;display:inline-flex;align-items:center;
+}
+.f-chip:hover{background:rgba(59,130,246,.1);color:var(--t1)}
+.f-chip.active{background:rgba(59,130,246,.2);border-color:var(--acc);color:#60a5fa}
+.f-toggle{
+display:flex;align-items:center;justify-content:space-between;
+width:100%;padding:12px 14px;margin-top:12px;
+background:rgba(30,41,59,.5);border:1px solid var(--bdr);
+border-radius:10px;color:var(--t2);font-size:.85rem;font-weight:600;
+cursor:pointer;transition:all .2s;min-height:48px;
+}
+.f-toggle:hover{background:rgba(59,130,246,.08);color:var(--t1);border-color:rgba(59,130,246,.3)}
+.f-toggle .fl{display:flex;align-items:center;gap:8px}
+.f-toggle .fl svg{width:16px;height:16px;color:var(--acc)}
+.f-toggle .fc{
+padding:2px 8px;background:rgba(59,130,246,.15);color:#60a5fa;
+border-radius:9999px;font-size:.7rem;font-weight:700;
+margin-left:4px;min-width:20px;text-align:center;
+}
+.f-toggle .fcv{width:16px;height:16px;transition:transform .25s;color:var(--t3)}
+.f-toggle.active .fcv{transform:rotate(180deg)}
+.show-all{
+display:flex;align-items:center;justify-content:center;gap:8px;
+width:100%;padding:14px 20px;margin-top:16px;
+background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;
+border:none;border-radius:12px;font-size:.9rem;font-weight:600;
+cursor:pointer;transition:all .2s;
+box-shadow:0 4px 14px rgba(59,130,246,.3);min-height:48px;
+}
+.show-all:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(59,130,246,.45)}
+.show-all svg{width:18px;height:18px}
+.show-all.collapsed{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3);box-shadow:none}
+.show-all.collapsed:hover{background:rgba(59,130,246,.25)}
+.aa-list{
+max-height:800px;overflow-y:auto;-webkit-overflow-scrolling:touch;
+overscroll-behavior:contain;border:1px solid var(--bdr);
+border-radius:10px;background:var(--card);margin-top:16px;
+}
+.a-card{padding:14px;border-bottom:1px solid rgba(51,65,85,.3);transition:background .15s}
+.a-card:last-child{border-bottom:none}
+.a-card:hover{background:rgba(59,130,246,.05)}
+.a-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.a-sym{font-size:1rem;font-weight:700;color:var(--t1);display:inline-flex;align-items:center;gap:4px}
+.a-nm{font-size:.8rem;color:var(--t3)}
+.a-metrics{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(51,65,85,.3);
+}
+.m{display:flex;flex-direction:column;gap:2px;min-width:0}
+.m-l{
+font-size:.65rem;color:var(--t3);text-transform:uppercase;
+letter-spacing:.04em;font-weight:600;
+display:inline-flex;align-items:center;gap:3px;flex-wrap:wrap;
+}
+.m-v{font-size:.85rem;color:var(--t1);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.stats{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+gap:12px;margin-top:16px;padding:16px;
+background:rgba(30,41,59,.5);border:1px solid var(--bdr);border-radius:12px;
+}
+.st-i{display:flex;flex-direction:column;gap:4px}
+.st-l{font-size:.7rem;color:var(--t3);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.st-v{font-size:1.4rem;font-weight:700;color:var(--t1)}
+.st-s{font-size:.7rem;color:var(--t3)}
+.empty{text-align:center;padding:40px 20px;color:var(--t3)}
+.empty svg{width:48px;height:48px;margin:0 auto 12px;opacity:.5}
+.tt{
+display:inline-flex;align-items:center;justify-content:center;
+width:14px;height:14px;border-radius:50%;
+background:rgba(148,163,184,.2);color:var(--t3);
+cursor:pointer;font-size:.6rem;font-weight:700;
+margin-left:4px;transition:all .15s;
+position:relative;vertical-align:middle;
+}
+.tt::before{content:'';position:absolute;top:-9px;left:-9px;right:-9px;bottom:-9px}
+.tt:hover,.tt.active{background:rgba(59,130,246,.3);color:var(--acc)}
+.tt .mt{display:none}
+.mg-sec{
+margin-top:24px;background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px;
+background-image:linear-gradient(160deg,rgba(59,130,246,.07),rgba(139,92,246,.05) 55%,transparent 90%);
+}
+.mg-head{display:flex;align-items:flex-start;gap:12px}
+.mg-ico{
+flex-shrink:0;width:42px;height:42px;border-radius:11px;
+background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.28);
+display:flex;align-items:center;justify-content:center;color:#60a5fa;
+}
+.mg-ico svg{width:19px;height:19px}
+.mg-t{font-size:1.15rem;font-weight:700;color:var(--t1);margin:0;letter-spacing:-.01em}
+.mg-d{font-size:.8rem;color:var(--t3);margin:4px 0 0;line-height:1.55}
+.mg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px;margin-top:18px}
+.mg-card{
+background:rgba(30,41,59,.45);border:1px solid var(--bdr);border-radius:12px;
+padding:14px 15px;transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+.mg-card:hover{
+transform:translateY(-3px);border-color:rgba(59,130,246,.5);
+background:rgba(30,41,59,.8);box-shadow:0 10px 24px rgba(2,6,23,.5);
+}
+.mg-name{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;color:var(--t1)}
+.mg-name svg{width:15px;height:15px;color:#60a5fa;flex-shrink:0}
+.mg-desc{font-size:.76rem;color:var(--t2);line-height:1.6;margin-top:7px}
+.mg-scale{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}
+.mg-chip{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:9999px;font-size:.66rem;font-weight:600;white-space:nowrap;line-height:1.4}
+/* ===== Content pages (KB / Methodology / Disclaimer) ===== */
+.pg-hd{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.pg-ico{width:46px;height:46px;flex-shrink:0;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);color:#60a5fa}
+.pg-ico svg{width:21px;height:21px}
+.pg-t{font-size:1.4rem;font-weight:700;color:var(--t1);margin:0;letter-spacing:-.01em}
+.pg-d{color:var(--t3);font-size:.85rem;line-height:1.65;margin:8px 0 0}
+.kb-sec{margin-bottom:28px}
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.sec-h .sn{font-family:'Unbounded',sans-serif;font-size:.68rem;font-weight:600;color:#60a5fa;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);padding:4px 9px;border-radius:6px;letter-spacing:.1em}
+.sec-h h3{font-size:1.08rem;font-weight:600;color:var(--t1);margin:0}
+.sec-sub{color:var(--t3);font-size:.82rem;margin:0 0 14px;line-height:1.6}
+.k-tl{position:relative;display:flex;flex-direction:column}
+.k-tl::before{content:'';position:absolute;left:27px;top:24px;bottom:24px;width:2px;background:linear-gradient(rgba(96,165,250,.4),rgba(96,165,250,.05))}
+.k-step{display:flex;gap:16px;padding:12px;border-radius:12px;position:relative;transition:background .2s}
+.k-step:hover{background:rgba(59,130,246,.06)}
+.k-num{font-family:'Unbounded',sans-serif;font-size:.78rem;font-weight:600;color:#60a5fa;background:#13233f;border:1px solid rgba(59,130,246,.4);width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;transition:all .2s}
+.k-step:hover .k-num{background:rgba(59,130,246,.2);transform:scale(1.06)}
+.k-tx{font-size:.85rem;color:var(--t2);line-height:1.7;padding-top:6px}
+.k-tx strong{color:var(--t1)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.feat{display:flex;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:12px;background:rgba(30,41,59,.35);transition:all .2s}
+.feat:hover{border-color:rgba(96,165,250,.5);background:rgba(30,41,59,.65);transform:translateY(-2px)}
+.feat .fi{width:38px;height:38px;flex-shrink:0;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.12);color:#60a5fa;transition:all .2s}
+.feat:hover .fi{background:rgba(59,130,246,.25);color:#93c5fd;transform:scale(1.08)}
+.feat .fi svg{width:17px;height:17px}
+.feat .ftt{font-size:.87rem;font-weight:600;color:var(--t1);margin-bottom:3px}
+.feat .fdd{font-size:.75rem;color:var(--t3);line-height:1.6}
+.lvl-row{display:flex;gap:18px;align-items:flex-start;padding:16px;border:1px solid var(--bdr);border-left:4px solid var(--lc);border-radius:12px;background:rgba(30,41,59,.35);margin-bottom:10px;transition:all .2s}
+.lvl-row:hover{background:rgba(30,41,59,.6);transform:translateX(4px)}
+.lvl-num{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:600;color:var(--lc);min-width:88px;padding-top:2px}
+.lvl-nm{font-size:.95rem;font-weight:700;color:var(--t1);margin-bottom:4px}
+.lvl-ds{font-size:.78rem;color:var(--t2);line-height:1.65}
+.lvl-ex{margin-top:8px;font-size:.72rem;color:var(--t3)}
+.lvl-ex b{color:#94a3b8;font-weight:600;margin-right:4px}
+.lvl-ex code{font-family:'SF Mono',Monaco,monospace;font-size:.7rem;color:#7dd3fc;background:rgba(14,165,233,.1);padding:2px 7px;border-radius:5px}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.tip-c{display:flex;gap:10px;padding:13px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(30,41,59,.35);font-size:.79rem;color:var(--t2);line-height:1.6;transition:all .2s}
+.tip-c:hover{border-color:rgba(74,222,128,.45);background:rgba(30,41,59,.6);transform:translateY(-2px)}
+.tip-c svg{width:16px;height:16px;flex-shrink:0;color:#4ade80;margin-top:2px}
+.faq-item{border:1px solid var(--bdr);border-radius:12px;background:rgba(30,41,59,.35);margin-bottom:8px;overflow:hidden;transition:border-color .25s}
+.faq-item.open{border-color:rgba(96,165,250,.55)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:transparent;border:none;color:var(--t1);font-size:.87rem;font-weight:600;text-align:left;transition:background .15s;min-height:48px}
+.faq-q:hover{background:rgba(59,130,246,.07)}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;color:var(--t3);transition:transform .25s,color .25s}
+.faq-item.open .faq-q svg{transform:rotate(180deg);color:#60a5fa}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s ease}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a>div{overflow:hidden}
+.faq-a p{margin:0;padding:0 16px 15px;font-size:.79rem;color:var(--t3);line-height:1.7}
+.prin{display:flex;flex-direction:column;gap:8px}
+.prin-row{display:flex;gap:14px;align-items:baseline;padding:12px 14px;border:1px solid var(--bdr);border-radius:10px;background:rgba(30,41,59,.35);font-size:.82rem;color:var(--t2);line-height:1.65;transition:all .2s}
+.prin-row:hover{border-color:rgba(96,165,250,.45);transform:translateX(4px)}
+.prin-row .pn{font-family:'Unbounded',sans-serif;font-size:.68rem;color:#60a5fa;flex-shrink:0;letter-spacing:.08em}
+.prin-row strong{color:var(--t1)}
+.m-formula{background:#0b1220;border:1px solid #2b3a55;border-radius:14px;padding:18px 16px;overflow-x:auto;margin-bottom:10px}
+.m-fx{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:'Unbounded',sans-serif;font-size:.8rem;color:#e2e8f0}
+.m-tok{padding:6px 10px;border-radius:8px;font-weight:600;font-size:.7rem;letter-spacing:.06em;transition:transform .15s}
+.m-tok:hover{transform:translateY(-2px)}
+.m-op{color:#64748b;font-weight:600}
+.m-leg{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:13px;font-size:.7rem;color:var(--t3)}
+.m-leg span{display:inline-flex;align-items:center;gap:6px}
+.m-leg i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.fac-row{border:1px solid var(--bdr);border-left:4px solid var(--fc);border-radius:12px;background:rgba(30,41,59,.35);padding:16px;margin-bottom:10px;transition:all .2s}
+.fac-row:hover{background:rgba(30,41,59,.6);transform:translateY(-2px)}
+.fac-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.fac-nm{font-size:.94rem;font-weight:700;color:var(--t1);display:flex;align-items:center;gap:9px}
+.fac-nm i{width:9px;height:9px;border-radius:50%;background:var(--fc);flex-shrink:0;box-shadow:0 0 8px var(--fc)}
+.fac-wg{font-family:'Unbounded',sans-serif;font-size:.64rem;font-weight:600;color:var(--fc);background:rgba(255,255,255,.04);border:1px solid var(--bdr);padding:4px 10px;border-radius:9999px;white-space:nowrap;letter-spacing:.05em}
+.fac-ds{font-size:.8rem;color:var(--t2);line-height:1.65}
+.fac-rl{margin-top:9px;font-size:.74rem;color:var(--t3);line-height:1.6;padding-left:11px;border-left:2px solid var(--fc)}
+.fac-bar{margin-top:11px;height:6px;background:#1e293b;border-radius:9999px;overflow:hidden}
+.fac-bar i{display:block;height:100%;background:var(--fc);border-radius:9999px;transition:width .9s ease}
+.m-table{width:100%;border-collapse:separate;border-spacing:0;font-size:.78rem;border:1px solid var(--bdr);border-radius:12px;overflow:hidden}
+.m-table th{background:rgba(30,41,59,.8);padding:9px 12px;text-align:left;font-size:.64rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);border-bottom:1px solid var(--bdr);white-space:nowrap}
+.m-table td{padding:11px 12px;border-bottom:1px solid rgba(51,65,85,.35);color:var(--t2);vertical-align:top;line-height:1.55}
+.m-table tr:last-child td{border-bottom:none}
+.m-table tbody tr{transition:background .15s}
+.m-table tbody tr:hover{background:rgba(59,130,246,.05)}
+.m-table .tk{font-weight:600;color:var(--t1);white-space:nowrap}
+.pt{display:inline-block;padding:2px 8px;border-radius:9999px;font-size:.65rem;font-weight:600;background:rgba(59,130,246,.12);color:#93c5fd;margin:2px 4px 2px 0;white-space:nowrap;font-family:'SF Mono',Monaco,monospace}
+.ex-step{display:flex;gap:12px;padding:11px 13px;border:1px solid var(--bdr);border-radius:10px;background:rgba(30,41,59,.35);margin-bottom:8px;font-size:.79rem;color:var(--t2);line-height:1.65;transition:all .2s}
+.ex-step:hover{border-color:rgba(96,165,250,.45);transform:translateX(3px)}
+.ex-step strong{color:var(--t1)}
+.ex-n{font-family:'Unbounded',sans-serif;font-size:.64rem;color:#60a5fa;flex-shrink:0;padding-top:3px;letter-spacing:.08em}
+.ex-res{margin-top:12px;padding:16px 18px;border-radius:12px;background:rgba(234,179,8,.08);border:1px solid rgba(234,179,8,.35);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.ex-score{font-family:'Unbounded',sans-serif;font-size:1.8rem;font-weight:700;color:#facc15;line-height:1}
+.ex-lv{font-size:.85rem;font-weight:600;color:#fde047}
+.ex-take{margin-top:10px;font-size:.77rem;color:var(--t3);line-height:1.65}
+.lim{border:1px solid rgba(251,146,60,.25);border-radius:12px;background:rgba(249,115,22,.05);padding:14px 16px;margin:0;list-style:none}
+.lim li{display:flex;gap:10px;padding:7px 0;font-size:.79rem;color:var(--t2);line-height:1.65}
+.lim li svg{width:15px;height:15px;flex-shrink:0;color:#fb923c;margin-top:3px}
+.lim li strong{color:var(--t1)}
+.m-note{font-size:.8rem;color:var(--t3);line-height:1.7}
+.ds-banner{display:flex;gap:13px;align-items:flex-start;padding:16px 18px;border:1px solid rgba(251,191,36,.4);border-radius:14px;background:linear-gradient(135deg,rgba(251,191,36,.1),rgba(249,115,22,.05));margin-bottom:20px}
+.ds-banner svg{width:22px;height:22px;color:#fbbf24;flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
+.ds-banner p{margin:0;font-size:.84rem;color:#fde68a;line-height:1.6;font-weight:500}
+.ds-meta{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;color:var(--t3);background:rgba(30,41,59,.6);border:1px solid var(--bdr);padding:4px 11px;border-radius:9999px;margin-top:9px}
+.ds-clause{display:flex;gap:16px;padding:18px;border:1px solid var(--bdr);border-radius:12px;background:rgba(30,41,59,.35);margin-bottom:10px;transition:all .2s}
+.ds-clause:hover{border-color:rgba(251,191,36,.45);background:rgba(30,41,59,.6);transform:translateX(3px)}
+.ds-idx{font-family:'Unbounded',sans-serif;font-size:.9rem;font-weight:600;color:#fbbf24;min-width:36px;height:36px;border-radius:9px;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ds-ct{font-size:.93rem;font-weight:600;color:var(--t1);margin:0 0 7px}
+.ds-cd{font-size:.79rem;color:var(--t2);line-height:1.75;margin:0}
+.ds-acc{margin-top:18px;padding:16px;border-radius:12px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.3);font-size:.82rem;color:#bfdbfe;line-height:1.65;text-align:center}
+.ds-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;justify-content:center}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.ds-banner svg{animation:none}}
+.msg-pre{
+background:var(--input);border:1px solid var(--bdr);border-radius:8px;
+padding:12px;font-family:'SF Mono',Monaco,monospace;
+font-size:.78rem;color:var(--t2);white-space:pre-wrap;
+word-break:break-word;max-height:220px;overflow-y:auto;
+margin-bottom:12px;-webkit-overflow-scrolling:touch;
+}
+.footer{
+margin-top:48px;padding:40px 0 24px;
+border-top:1px solid var(--bdr);
+background:linear-gradient(180deg,transparent,rgba(15,23,42,.5));
+}
+.ft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-bottom:32px}
+.ft-col h4{font-size:.9rem;font-weight:700;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.ft-col h4 svg{width:16px;height:16px;color:var(--acc)}
+.ft-col p{font-size:.8rem;color:var(--t3);line-height:1.6;margin-bottom:8px}
+.ft-col ul{list-style:none;padding:0;margin:0}
+.ft-col ul li{margin-bottom:6px}
+.ft-col ul li a,.ft-col ul li button{
+font-size:.82rem;color:var(--t2);text-decoration:none;
+transition:color .2s;background:transparent;border:none;
+padding:4px 0;cursor:pointer;display:inline-flex;
+align-items:center;gap:6px;font-family:inherit;
+}
+.ft-col ul li a:hover,.ft-col ul li button:hover{color:#60a5fa}
+.ft-soc{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.ft-soc a{
+display:flex;align-items:center;justify-content:center;
+width:40px;height:40px;background:rgba(30,41,59,.6);
+border:1px solid var(--bdr);border-radius:8px;
+color:var(--t2);transition:all .2s;text-decoration:none;
+}
+.ft-soc a:hover{background:rgba(59,130,246,.15);border-color:var(--acc);color:#60a5fa;transform:translateY(-2px)}
+.ft-soc a svg{width:16px;height:16px}
+.ft-bot{
+display:flex;align-items:center;justify-content:space-between;
+padding-top:24px;border-top:1px solid rgba(51,65,85,.5);
+gap:16px;flex-wrap:wrap;
+}
+.ft-bot p{font-size:.75rem;color:var(--t3);margin:0}
+.ft-leg{display:flex;gap:16px;flex-wrap:wrap}
+.ft-leg a{font-size:.75rem;color:var(--t3);text-decoration:none;transition:color .2s}
+.ft-leg a:hover{color:#60a5fa}
+.ft-qs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.ft-qs .qs{
+display:inline-flex;align-items:center;gap:4px;
+padding:4px 10px;background:rgba(30,41,59,.5);
+border:1px solid var(--bdr);border-radius:9999px;
+font-size:.72rem;color:var(--t2);
+}
+.ft-qs .qs b{color:#60a5fa;font-weight:700}
+.asset-row{position:relative}
+@media(max-width:767px){
+.tpl-grid{grid-template-columns:1fr 1fr}
+.ft-bot{flex-direction:column;text-align:center}
+.ft-leg{justify-content:center}
+.stats{grid-template-columns:repeat(2,1fr)}
+.a-metrics{grid-template-columns:repeat(2,1fr)}
+.s-table{font-size:.7rem}
+.s-table th,.s-table td{padding:6px}
+.s-table .sym,.s-table .al{font-size:.75rem}
+.ss-cta{width:100%;justify-content:center}
+.ss-tip{display:none}
+}
+@media(max-width:560px){
+.pg-t{font-size:1.2rem}
+.lvl-row{flex-direction:column;gap:8px}
+.lvl-num{min-width:0}
+.ds-clause{flex-direction:column;gap:10px}
+}
+@media(max-width:400px){
+.tpl-grid{grid-template-columns:1fr}
+.stats{grid-template-columns:1fr}
+.a-metrics{grid-template-columns:1fr}
+.ft-grid{grid-template-columns:1fr;gap:24px}
+.mg-grid{grid-template-columns:1fr}
+}
+input,textarea,select{font-size:16px!important}
+@media(min-width:640px){input,textarea,select{font-size:14px!important}}
+@media print{
+body *{visibility:hidden!important}
+.print-n,.print-n *{visibility:visible!important}
+.print-n{position:absolute;left:0;top:0;width:100%;padding:40px;text-align:center;font-size:16pt;color:#000!important;background:#fff!important}
+.print-n h1{color:#ef4444!important;font-size:24pt;margin-bottom:20px}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="mb" aria-label="Open menu">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="top-bar">
+<div class="lang-sw" role="group" aria-label="Language">
+<button class="lang-btn active" data-lang="en" title="English" aria-label="English">
+<svg viewBox="0 0 60 30"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg>
+</button>
+<button class="lang-btn" data-lang="ru" title="Русский" aria-label="Русский">
+<svg viewBox="0 0 900 600"><rect width="900" height="200" fill="#fff"/><rect y="200" width="900" height="200" fill="#0039A6"/><rect y="400" width="900" height="200" fill="#D52B1E"/></svg>
+</button>
+</div>
+<button class="c-btn" id="ctop" aria-label="Contact">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+<span data-i18n="c_btn">Contact</span>
+</button>
+</div>
+<div class="sb-overlay" id="sbo"></div>
+<nav class="sidebar" id="sb" aria-label="Main">
+<div class="sb-head" style="padding:20px;border-bottom:1px solid var(--bdr);display:flex;justify-content:space-between;align-items:center">
+<span style="font-weight:600;color:var(--t1)" data-i18n="menu">Menu</span>
+<button class="close-btn" id="sbx" aria-label="Close" style="position:static;width:32px;height:32px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+</div>
+<div style="padding:12px">
+<button class="sb-item active" data-tab="calc">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+<span data-i18n="t_calc">Calculator</span>
+</button>
+<button class="sb-item" data-tab="assets">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+<span data-i18n="t_assets">All Assets</span>
+</button>
+<button class="sb-item" data-tab="about">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+<span data-i18n="t_about">About Project</span>
+</button>
+<button class="sb-item" data-tab="kb">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+<span data-i18n="t_kb">Knowledge Base</span>
+</button>
+<button class="sb-item" data-tab="meth">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+<span data-i18n="t_meth">Methodology</span>
+</button>
+<button class="sb-item" data-tab="disc">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+<span data-i18n="t_disc">Disclaimer</span>
+</button>
+<button class="sb-item" data-tab="contact">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+<span data-i18n="t_contact">Contact Us</span>
+</button>
+</div>
+</nav>
+<main style="max-width:48rem;margin:0 auto;padding:1.5rem 1rem">
+<div id="tab-calc" class="tab active">
+<header style="text-align:center;margin-bottom:2rem;padding-top:3rem">
+<div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#3b82f6,#9333ea)" aria-hidden="true">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+</div>
+<h1 style="font-size:1.7rem;font-weight:700;color:#fff;margin:12px 0 8px" data-i18n="title">Crypto Portfolio Risk Calculator</h1>
+<p style="color:#94a3b8;font-size:.95rem" data-i18n="sub">Find out how risky your crypto portfolio is.</p>
+<div style="margin-top:12px"><span class="coin-cnt" id="ccb"></span></div>
+</header>
+<section style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px;margin-bottom:24px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+<h2 style="font-size:1.1rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+<span data-i18n="your_port">Your Portfolio</span>
+<span class="counter"><span class="c" id="ac">0</span> / 100 <span data-i18n="assets_w">assets</span></span>
+</h2>
+</div>
+<div class="tpl-sec" id="tpls">
+<button type="button" class="tpl-toggle" id="tpl-tog" aria-expanded="false">
+<span class="tl">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+<span data-i18n="quick_tpl">Quick Templates</span>
+</span>
+<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="tpl-content">
+<div class="tpl-inner">
+<div class="tpl-grid">
+<button type="button" class="tpl-card" data-tpl="conservative">
+<div class="tpl-name" data-i18n="tpl_c">Conservative</div>
+<div class="tpl-desc">BTC 60%, ETH 30%, USDC 10%</div>
+</button>
+<button type="button" class="tpl-card" data-tpl="balanced">
+<div class="tpl-name" data-i18n="tpl_b">Balanced</div>
+<div class="tpl-desc">BTC 40%, ETH 30%, SOL/LINK 30%</div>
+</button>
+<button type="button" class="tpl-card" data-tpl="growth">
+<div class="tpl-name" data-i18n="tpl_g">Growth</div>
+<div class="tpl-desc">ETH 40%, SOL 20%, UNI/AAVE 40%</div>
+</button>
+<button type="button" class="tpl-card" data-tpl="aggressive">
+<div class="tpl-name" data-i18n="tpl_a">Aggressive</div>
+<div class="tpl-desc" data-i18n="tpl_a_d">Alts, Meme, AI</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div id="acn" style="display:flex;flex-direction:column;gap:16px;margin-bottom:16px"></div>
+<button id="add-btn" style="display:flex;align-items:center;gap:8px;background:transparent;border:none;color:#60a5fa;font-weight:500;padding:8px 0;min-height:44px;font-size:.9rem" type="button">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+<span data-i18n="add_asset">Add Asset</span>
+</button>
+<div style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid #334155">
+<span style="color:#94a3b8;font-weight:500;font-size:.9rem" data-i18n="total_al">Total Allocation</span>
+<span id="td" style="font-size:1.25rem;font-weight:700;color:#fff">0%</span>
+</div>
+<div id="te" style="display:none;margin-top:8px;color:#f87171;font-size:.85rem;align-items:center;gap:4px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+<span data-i18n="tot_err">Portfolio allocation must equal 100%.</span>
+</div>
+<button id="ana-btn" disabled style="width:100%;margin-top:16px;padding:14px 24px;background:linear-gradient(90deg,#2563eb,#9333ea);color:#fff;font-weight:600;border-radius:12px;border:none;transition:all .2s;min-height:48px;font-size:1rem" type="button">
+<span data-i18n="analyze">Analyze Portfolio</span>
+</button>
+</section>
+<div id="res" style="display:none;flex-direction:column;gap:16px">
+<div id="ss-tgt" style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:32px 24px;text-align:center">
+<div style="margin-bottom:24px">
+<div style="position:relative;width:100%;max-width:28rem;margin:0 auto;height:16px;border-radius:9999px;overflow:hidden" class="gauge-track">
+<div id="gauge" style="position:absolute;top:50%;transform:translateY(-50%);width:24px;height:24px;background:#fff;border-radius:50%;border:4px solid #020617;box-shadow:0 4px 12px rgba(0,0,0,.4);transition:left .7s;left:0"></div>
+</div>
+<div style="display:flex;justify-content:space-between;max-width:28rem;margin:8px auto 0;font-size:.75rem;color:#64748b"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+</div>
+<div id="rs" style="font-size:3.6rem;font-weight:700;color:#fff;margin-bottom:8px">0</div>
+<div id="rl" style="font-size:1.4rem;font-weight:600"></div>
+<div style="margin-top:16px;color:#64748b;font-size:.75rem">Powered by Crypto Portfolio Risk Analyzer</div>
+<div class="ss-wrap">
+<div class="ss-tip" data-i18n="sh_tip">Share this result as an image</div>
+<button type="button" class="ss-cta" id="ss-btn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+<span data-i18n="sh_res">Share Result</span>
+</button>
+</div>
+</div>
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap">
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+<span data-i18n="summary">Summary</span>
+</h3>
+<button type="button" class="copy-btn" id="cp-btn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+<span data-i18n="cp_res">Copy result</span>
+</button>
+</div>
+<p id="rsum" style="color:#cbd5e1;line-height:1.6;font-size:.9rem"></p>
+<div id="saw"></div>
+</div>
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px">
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+<span data-i18n="r_break">Risk Breakdown</span>
+</h3>
+<div id="brc" style="display:flex;flex-direction:column;gap:16px"></div>
+</div>
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px">
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+<span data-i18n="pos_f">Positive Factors</span>
+</h3>
+<ul id="pos" style="display:flex;flex-direction:column;gap:8px;padding:0;margin:0;list-style:none"></ul>
+</div>
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px">
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+<span data-i18n="risk_f">Risk Factors</span>
+</h3>
+<ul id="ris" style="display:flex;flex-direction:column;gap:8px;padding:0;margin:0;list-style:none"></ul>
+</div>
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px">
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.9V17h8v-2.1A7 7 0 0 0 12 2z"/></svg>
+<span data-i18n="recs">Recommendations</span>
+</h3>
+<ul id="rec" style="display:flex;flex-direction:column;gap:8px;padding:0;margin:0;list-style:none"></ul>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #334155;text-align:center">
+<p style="color:#94a3b8;font-size:.85rem;margin-bottom:12px" data-i18n="has_q">Have questions about your result?</p>
+<button type="button" class="c-btn" onclick="openCM()">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+<span data-i18n="ask_dev">Ask the developer</span>
+</button>
+</div>
+</div>
+</div>
+<div class="disc">
+<div class="disc-t">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+<span data-i18n="disc_t">Important Disclaimer</span>
+</div>
+<p style="margin:0" data-i18n="disc_p1">The information provided is for informational and educational purposes only. The risk analysis, scores, and recommendations should not be construed as investment advice.</p>
+<button class="rm-more" id="rm-btn" type="button">
+<span data-i18n="disc_full">Open full disclaimer</span>
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</button>
+</div>
+</div>
+<div id="tab-assets" class="tab">
+<div style="padding-top:3rem">
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:20px">
+<h2 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+<span data-i18n="all_t">All 100 Assets</span>
+<span class="tt" tabindex="0">i<div class="mt" data-i18n="all_tt">Complete catalog of 100 top crypto assets by market cap with full risk profiles.</div></span>
+</h2>
+<p style="color:#94a3b8;font-size:.85rem;margin-bottom:16px" data-i18n="all_d">Search, filter and explore detailed risk profiles for each asset.</p>
+<div class="aa-search">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+<input type="text" id="asi" data-i18n-ph="search_ph" placeholder="Search by symbol, name, or category..." aria-label="Search assets">
+</div>
+<button type="button" class="f-toggle" id="ftb" aria-expanded="false">
+<span class="fl">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+<span data-i18n="f_btn">Filters</span>
+<span class="fc" id="fcc">0</span>
+</span>
+<svg class="fcv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+<div class="f-panel" id="fp">
+<div class="f-chips" id="fcat"></div>
+<div class="f-chips" id="fmc"></div>
+</div>
+<div class="stats" id="astats"></div>
+<div class="aa-list scroll-y" id="alist" role="list"></div>
+<button type="button" class="show-all" id="sa-btn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+<span id="sa-l" data-i18n="sh_all">View all 100 assets</span>
+</button>
+</div>
+<section class="mg-sec" id="mg-sec" aria-label="Metrics guide"></section>
+</div>
+</div>
+<div id="tab-about" class="tab">
+<div style="padding-top:3rem">
+<div class="about-sec">
+<div class="about-t">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+<span data-i18n="ab_t">About This Project</span>
+</div>
+<p data-i18n="ab_i">Crypto Portfolio Risk Analyzer is a free, privacy-first web tool that helps crypto investors understand and quantify the risk level of their cryptocurrency portfolios.</p>
+<div class="about-c">
+<h4 data-i18n="ab_u">What Makes It Unique</h4>
+<ul>
+<li data-i18n="ab_1"><strong>100% Client-Side:</strong> All calculations happen in your browser. Your data never leaves your device.</li>
+<li data-i18n="ab_2"><strong>Multi-Factor Analysis:</strong> We analyze 6 different risk factors for a comprehensive view.</li>
+<li data-i18n="ab_3"><strong>100 Curated Assets:</strong> Top-100 cryptocurrencies with accurate risk profiles.</li>
+<li data-i18n="ab_4"><strong>Instant Results:</strong> Get your risk score (0-100) instantly with actionable recommendations.</li>
+</ul>
+<h4 data-i18n="ab_w">Who Is It For?</h4>
+<ul>
+<li data-i18n="ab_u1"><strong>Beginner Investors:</strong> Understand your risk exposure before investing.</li>
+<li data-i18n="ab_u2"><strong>Intermediate Investors:</strong> Validate your portfolio construction.</li>
+<li data-i18n="ab_u3"><strong>Portfolio Managers:</strong> Quick risk assessment tool.</li>
+</ul>
+</div>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #334155">
+<button type="button" class="c-btn" onclick="openCM()">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+<span data-i18n="feed_b">Send feedback</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div id="tab-kb" class="tab">
+<div style="padding-top:3rem" id="kb-page"></div>
+</div>
+<div id="tab-meth" class="tab">
+<div style="padding-top:3rem" id="meth-page"></div>
+</div>
+<div id="tab-disc" class="tab">
+<div style="padding-top:3rem" id="disc-page"></div>
+</div>
+<div id="tab-contact" class="tab">
+<div style="padding-top:3rem">
+<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:24px">
+<h2 style="font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:8px;display:flex;align-items:center;gap:8px">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+<span data-i18n="ct_t">Contact Us</span>
+</h2>
+<p style="color:#cbd5e1;font-size:.875rem;margin-bottom:24px" data-i18n="ct_i">Have questions, feedback, or suggestions? Fill out the form below and we'll respond via Telegram.</p>
+<div id="cft"></div>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #334155">
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:12px" data-i18n="rt_t">Response Time</h3>
+<p style="color:#cbd5e1;font-size:.875rem" data-i18n="rt_d">We typically respond within 24 hours. For urgent matters, please mention "urgent" in your message.</p>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="ft-grid">
+<div class="ft-col">
+<h4>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+<span data-i18n="ft_ab">About Project</span>
+</h4>
+<p data-i18n="ft_ab_d">Free privacy-first tool to analyze the risk level of any cryptocurrency portfolio. 100% client-side.</p>
+<div class="ft-qs">
+<span class="qs"><span data-i18n="st_tot">Assets</span>: <b>100</b></span>
+<span class="qs"><span data-i18n="kb_rs">Levels</span>: <b>5</b></span>
+<span class="qs"><span data-i18n="mt_fc">Factors</span>: <b>6</b></span>
+</div>
+</div>
+<div class="ft-col">
+<h4>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+<span data-i18n="ft_to">Tools</span>
+</h4>
+<ul>
+<li><button onclick="switchTab('calc')" data-i18n="t_calc">Calculator</button></li>
+<li><button onclick="switchTab('assets')" data-i18n="t_assets">All Assets</button></li>
+<li><button onclick="switchTab('kb')" data-i18n="t_kb">Knowledge Base</button></li>
+<li><button onclick="switchTab('meth')" data-i18n="t_meth">Methodology</button></li>
+</ul>
+</div>
+<div class="ft-col">
+<h4>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+<span data-i18n="ft_re">Resources</span>
+</h4>
+<ul>
+<li><button onclick="switchTab('about')" data-i18n="t_about">About Project</button></li>
+<li><button onclick="switchTab('disc')" data-i18n="t_disc">Disclaimer</button></li>
+<li><button onclick="openCM()" data-i18n="feed_b">Send feedback</button></li>
+<li><a href="https://cryptonews.website" target="_blank" rel="noopener noreferrer" data-i18n="ft_bl">CryptoNews Blog</a></li>
+</ul>
+</div>
+<div class="ft-col">
+<h4>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<span data-i18n="ft_fo">Follow Us</span>
+</h4>
+<div class="ft-soc">
+<a href="https://x.com/cryptonewsweb" target="_blank" rel="noopener noreferrer" title="X" aria-label="X">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+</a>
+<a href="https://www.threads.com/@cryptonewsweb" target="_blank" rel="noopener noreferrer" title="Threads" aria-label="Threads">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.185-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.577.878-6.43 2.522-8.48C5.843 1.208 8.596.024 12.177 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.984-6.54 2.861C4.305 6.836 3.608 9.264 3.589 12c.02 2.736.717 5.164 2.057 7.02 1.43 1.868 3.63 2.826 6.54 2.847 2.623-.02 4.358-.633 5.8-2.045 1.647-1.613 1.696-3.593 1.096-5.033-.416-.999-1.097-1.737-1.895-2.27-.262 1.88-.913 3.292-1.946 4.21-1.178 1.04-2.409 1.392-3.653 1.392z"/></svg>
+</a>
+<a href="https://vk.ru/cryptonews.website" target="_blank" rel="noopener noreferrer" title="VK" aria-label="VK">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.391 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4.03 8.57 4.03 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.204.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/></svg>
+</a>
+<a href="https://t.me/cryptonewsweb" target="_blank" rel="noopener noreferrer" title="Telegram" aria-label="Telegram">
+<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+</a>
+</div>
+<div style="margin-top:16px">
+<button type="button" class="c-btn" onclick="openCM()" style="width:100%">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+<span data-i18n="ct_dev">Contact Developer</span>
+</button>
+</div>
+</div>
+</div>
+<div class="ft-bot">
+<p>© 2026 Crypto Portfolio Risk Analyzer · <span data-i18n="ft_lo">All calculations performed locally</span></p>
+<div class="ft-leg">
+<a href="#" onclick="event.preventDefault();switchTab('about')" data-i18n="ft_pr">Privacy</a>
+<a href="#" onclick="event.preventDefault();switchTab('meth')" data-i18n="t_meth">Methodology</a>
+<a href="#" onclick="event.preventDefault();switchTab('disc')" data-i18n="ft_te">Disclaimer</a>
+</div>
+</div>
+</footer>
+</main>
+<div class="modal" id="cm" role="dialog" aria-modal="true">
+<div class="modal-c">
+<button class="close-btn" id="cmx" aria-label="Close">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:8px;padding-right:40px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+<span data-i18n="cm_t">Send Message to Developer</span>
+</h3>
+<p style="color:#94a3b8;font-size:.85rem;margin-bottom:16px" data-i18n="cm_d">Fill in the form below and we'll reply via Telegram.</p>
+<div id="cfm"></div>
+</div>
+</div>
+<div class="modal" id="csm">
+<div class="modal-c">
+<button class="close-btn" onclick="document.getElementById('csm').classList.remove('active')" aria-label="Close">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+</button>
+<div style="text-align:center">
+<div style="display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.2);margin-bottom:16px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<h3 style="font-size:1.15rem;font-weight:600;color:#fff;margin-bottom:8px" data-i18n="mr_t">Message Ready!</h3>
+<p style="color:#cbd5e1;font-size:.875rem;margin-bottom:16px" data-i18n="mr_d">Your message is ready to be sent. Copy it below and send via Telegram.</p>
+</div>
+<div class="msg-pre scroll-y" id="mp"></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<button id="mcb" style="padding:12px 16px;background:linear-gradient(90deg,#2563eb,#9333ea);color:#fff;font-weight:600;border-radius:8px;border:none;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+<span data-i18n="cp_m">Copy Message</span>
+</button>
+<button id="mtb" style="padding:12px 16px;background:#229ED9;color:#fff;font-weight:600;border-radius:8px;border:none;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+<span data-i18n="op_tg">Open Telegram</span>
+</button>
+<button onclick="document.getElementById('csm').classList.remove('active')" style="padding:12px 16px;background:#1e293b;color:#cbd5e1;font-weight:600;border-radius:8px;border:none;min-height:44px;cursor:pointer">
+<span data-i18n="cl">Close</span>
+</button>
+</div>
+</div>
+</div>
+<div class="modal" id="ssm">
+<div class="modal-c" id="ssmc"></div>
+</div>
+<script>
+(function(){'use strict';
+var doc=document,win=window;
+try{var ls=win.localStorage}catch(e){ls={getItem:function(){return null},setItem:function(){}}}
+var $=function(s,p){return(p||doc).querySelector(s)};
+var $$=function(s,p){return Array.from((p||doc).querySelectorAll(s))};
+var ce=function(t,c){var e=doc.createElement(t);if(c)e.className=c;return e};
+function debounce(fn,ms){var t;return function(){var a=arguments,c=this;clearTimeout(t);t=setTimeout(function(){fn.apply(c,a)},ms)}}
+var L={
+en:{menu:"Menu",t_calc:"Calculator",t_assets:"All Assets",t_about:"About Project",t_kb:"Knowledge Base",t_meth:"Methodology",t_disc:"Disclaimer",t_contact:"Contact Us",c_btn:"Contact",title:"Crypto Portfolio Risk Calculator",sub:"Find out how risky your crypto portfolio is.",your_port:"Your Portfolio",assets_w:"assets",quick_tpl:"Quick Templates",tpl_c:"Conservative",tpl_b:"Balanced",tpl_g:"Growth",tpl_a:"Aggressive",tpl_a_d:"Alts, Meme, AI",add_asset:"Add Asset",total_al:"Total Allocation",tot_err:"Portfolio allocation must equal 100%.",analyze:"Analyze Portfolio",sh_tip:"Share this result as an image",sh_res:"Share Result",summary:"Summary",cp_res:"Copy result",r_break:"Risk Breakdown",pos_f:"Positive Factors",risk_f:"Risk Factors",recs:"Recommendations",has_q:"Have questions about your result?",ask_dev:"Ask the developer",ct_dev:"Contact Developer",disc_t:"Important Disclaimer",disc_p1:"The information provided is for informational and educational purposes only. The risk analysis, scores, and recommendations should not be construed as investment advice.",disc_p2:"Cryptocurrency investments are subject to high market risk, price volatility, and potential loss of capital. Past performance is not indicative of future results.",disc_p3:"The creators and operators shall not be liable for any losses or damages arising from the use of this tool.",disc_full:"Open full disclaimer",read_m:"Read more",show_l:"Show less",all_t:"All 100 Assets",all_tt:"Complete catalog of 100 top crypto assets by market cap with full risk profiles.",all_d:"Search, filter and explore detailed risk profiles for each asset.",search_ph:"Search by symbol, name, or category...",f_btn:"Filters",sh_all:"View all 100 assets",sh_less:"Show less",mg_t:"How to Read Asset Metrics",mg_d:"What every indicator in the catalog means — all explanations in one place, no hovering required.",mg_sym:"Symbol",mg_nm:"Name",sh_dl_t:"Screenshot Ready",sh_dl:"Download",sh_fb:"Your browser doesn't support native sharing — copy or save the screenshot and send it manually.",sh_ci:"Copy Image",sh_cok:"Image copied to clipboard",sh_cer:"Couldn't copy the image",sh_ok:"Result shared",
+kb_intro:"Everything you need to get value from the analyzer: how it works, what each number means, and answers to the questions we hear most often.",kb_gs:"Getting Started",kb_gd:"Five steps from an empty portfolio to a full risk report:",kb_s1:"<strong>Add assets.</strong> Click \"Add Asset\" and pick a coin from the catalog — search by ticker or name works. You can hold up to 100 different assets in one portfolio.",kb_s2:"<strong>Set allocations.</strong> Enter a percentage for each asset or pick a preset from the dropdown. The total must equal exactly 100% — the analyzer watches this for you.",kb_s3:"<strong>Try templates.</strong> Open \"Quick Templates\" to load a ready-made strategy — Conservative, Balanced, Growth or Aggressive — and tweak it to your taste.",kb_s4:"<strong>Run the analysis.</strong> Once the total hits 100%, press \"Analyze Portfolio\". You'll get a 0-100 score, a level and a full factor breakdown.",kb_s5:"<strong>Save & share.</strong> Your portfolio is saved automatically in the browser. Copy the report as text or share it as an image via the system share menu.",
+kb_ft:"Everything the Tool Can Do",kb_fd:"A complete tour of the analyzer's capabilities — no hidden corners.",kb_f1_t:"Portfolio builder",kb_f1_d:"Assemble a portfolio from 100 curated assets: live search, risk badges next to each coin, allocation input with quick presets from 5% to 100%.",kb_f2_t:"Quick templates",kb_f2_d:"Four ready-made strategies to start from — or to stress-test your own idea against a benchmark.",kb_f3_t:"Auto-save in the browser",kb_f3_d:"The portfolio persists in localStorage — close the tab and pick up where you left off. Hotkeys: Ctrl+S to force save, Ctrl+L to reload.",kb_f4_t:"Risk score 0-100",kb_f4_d:"One comparable number for any portfolio, mapped to five levels from Very Low to Very High, with an animated gauge.",kb_f5_t:"Six-factor breakdown",kb_f5_d:"See exactly what drives your score: asset risk, concentration, diversification, meme exposure, small-cap exposure and project age — each with its contribution bar.",kb_f6_t:"Actionable insights",kb_f6_d:"The report highlights what works in your favor, what adds risk, and gives concrete recommendations on improving the structure.",kb_f7_t:"Portfolio snapshot table",kb_f7_d:"Every asset in one table: category, volatility, market cap, age, base score and allocation.",kb_f8_t:"Copy & share",kb_f8_d:"Copy the full report as text in one click, or generate a screenshot and share it through the native share menu — Telegram, messengers, socials.",kb_f9_t:"Catalog of 100 assets",kb_f9_d:"A dedicated tab with every coin: search, filters by category and market cap, aggregate stats and a full risk profile for each asset.",kb_f10_t:"Privacy by design",kb_f10_d:"All calculations run in your browser. Your portfolio never leaves the device — no accounts, no servers, no data collection.",kb_f11_t:"Two languages",kb_f11_d:"English and Russian, switched instantly from the top bar. Your choice is remembered.",kb_f12_t:"Works everywhere",kb_f12_d:"Fully responsive layout tuned for desktops, tablets and phones — tooltips included.",
+kb_rs:"Understanding Risk Scores",kb_rd:"The 0-100 scale is split into five bands. Here's what each one means in practice:",lv_vl:"Very Low",lv_l:"Low",lv_m:"Medium",lv_h:"High",lv_vh:"Very High",kb_lv_vl_d:"Stable, mature portfolio. Dominated by large-cap, established assets — drawdowns are usually milder than the market average.",kb_lv_l_d:"Sound structure with a solid core. Some volatility is present, but the foundation keeps overall risk contained.",kb_lv_m_d:"A balanced mix with meaningful exposure to volatile assets. Expect noticeable swings — position sizing starts to matter.",kb_lv_h_d:"Aggressive tilt. Concentration or a heavy altcoin/meme share can produce sharp drawdowns; active management is required.",kb_lv_vh_d:"Speculative portfolio. Most of the value sits in young, small-cap or meme assets — up to full loss of capital in a bad scenario.",kb_lv_ex:"Typical example:",kb_lv_vl_ex:"BTC 60% · ETH 30% · USDC 10%",kb_lv_l_ex:"BTC 40% · ETH 30% · SOL 15% · LINK 15%",kb_lv_m_ex:"ETH 40% · SOL 20% · UNI 20% · AAVE 20%",kb_lv_h_ex:"SOL 35% · AVAX 25% · DOGE 20% · FET 20%",kb_lv_vh_ex:"PEPE 30% · WIF 25% · BONK 25% · AI16Z 20%",
+kb_tp:"Tips for Lower Risk",kb_t1:"Hold 50-70% in BTC and ETH — the most battle-tested assets in the market",kb_t2:"Diversify across 5-10 assets: the model rewards breadth",kb_t3:"Keep meme coins under 10% — above 20% the penalties kick in hard",kb_t4:"Cap small-cap exposure at 30% to protect liquidity",kb_t5:"Add a 5-15% stablecoin reserve as dry powder for drawdowns",kb_t6:"Avoid single-asset portfolios — one coin carries a +20 diversification penalty",kb_t7:"Watch project age: assets younger than 2 years add a penalty above 20% of the portfolio",kb_t8:"Re-run the analysis after every rebalance — the score moves with the structure",
+kb_faq:"Frequently Asked Questions",kb_q1:"Does the service store my portfolio?",kb_a1:"Only in your browser's localStorage. Nothing is sent to any server. Clearing site data removes the portfolio; Ctrl+L loads the last saved version.",kb_q2:"Are prices and scores updated in real time?",kb_a2:"No. Risk profiles are curated and reviewed periodically. The model evaluates portfolio structure, not current market conditions — that's why scores don't depend on price swings.",kb_q3:"Why must allocations total exactly 100%?",kb_a3:"The score is a weighted average of asset risks. If the weights don't sum to 100%, the math silently distorts — so the analyzer blocks the calculation instead.",kb_q4:"My coin isn't in the catalog. Can I add it?",kb_a4:"The catalog is limited to the top-100 curated assets to keep risk profiles reliable. If a major asset is missing, send us a note via the contact form.",kb_q5:"Does a low score mean I can't lose money?",kb_a5:"Absolutely not. Even a Very Low portfolio can lose value — crypto is volatile by nature. The score compares structures; it doesn't predict prices.",kb_q6:"Is this investment advice?",kb_a6:"No. The tool is educational. Read the full disclaimer tab before making decisions — and never invest more than you can afford to lose.",kb_q7:"How do I share my result?",kb_a7:"Press \"Share Result\" under the score. On phones and supported browsers you'll get the native share sheet with a screenshot; elsewhere you can copy the image or download it.",kb_q8:"Any hotkeys?",kb_a8:"Ctrl+S — force-save the portfolio, Ctrl+L — load the saved version, Esc — close any open menu or dialog.",
+mt_intro:"A complete description of the model: how base scores are assigned, how six factors fold into one number, and — just as importantly — what the model deliberately ignores.",mt_ph_t:"Principles",mt_ph_1:"<strong>One number.</strong> Any portfolio reduces to a comparable 0-100 score.",mt_ph_2:"<strong>Transparency.</strong> Every point of the score is traceable to a specific rule.",mt_ph_3:"<strong>Conservatism.</strong> When in doubt, the model overstates risk rather than understates it.",mt_ph_4:"<strong>Structure over price.</strong> We score what you hold, not where the market is.",mt_f:"The Formula",mt_f_d:"The final score is the sum of six components, clamped to the 0-100 range:",mt_ar_n:"Asset Risk",mt_ar_w:"≈ 2-35 pts",mt_ar_d:"The foundation of the score. Each asset carries a base risk score from 2 to 35; the component is the allocation-weighted average across the portfolio.",mt_ar_r:"A portfolio of perfectly safe assets would score near 2; an all-meme portfolio approaches 35.",mt_co_n:"Concentration",mt_co_w:"0 / +10 / +20 pts",mt_co_d:"Single points of failure. If any single asset exceeds 60% of the portfolio, +10 is added; above 80% — +20.",mt_co_r:"Even a blue-chip asset becomes a systemic risk for your portfolio once it dominates it.",mt_dv_n:"Diversification",mt_dv_w:"+20 / +15 / +10 / 0 pts",mt_dv_d:"Breadth penalty: 1 asset = +20, 2 assets = +15, 3 assets = +10, 4 or more = 0.",mt_dv_r:"Diversification doesn't remove crypto's market risk, but it removes idiosyncratic risk — hacks, rug pulls, project failures.",mt_mp_n:"Meme Penalty",mt_mp_w:"0 / +10 / +20 pts",mt_mp_d:"Speculative overlay: meme coins above 20% of the portfolio add +10, above 40% add +20.",mt_mp_r:"Meme assets are driven by attention, not fundamentals — their drawdowns are the deepest in the market.",mt_sp_n:"Small-Cap Penalty",mt_sp_w:"0 / +15 pts",mt_sp_d:"Liquidity overlay: more than 30% in small-cap assets adds +15.",mt_sp_r:"Small caps are thin: exit slippage and manipulation risk grow non-linearly with position size.",mt_ap_n:"Age Penalty",mt_ap_w:"0 / +10 pts",mt_ap_d:"Track-record overlay: more than 20% in projects younger than 2 years adds +10.",mt_ap_r:"Most crypto projects fail within their first two years. Age is the cheapest survival filter there is.",mt_bs_t:"How Base Scores Are Built",mt_bs_d:"Every asset in the catalog is assigned a base score from 2 to 35 by the team, based on four components. The table shows the underlying logic; final values are manually calibrated against observed market behavior.",mt_bs_c1:"Component",mt_bs_c2:"Levels → points",mt_bs_vol:"Volatility",mt_bs_vol_d:"Typical swing amplitude — the dominant factor",mt_bs_mc:"Market cap",mt_bs_mc_d:"Proxy for liquidity and stability",mt_bs_age:"Age",mt_bs_age_d:"Survival track record",mt_bs_cat:"Category",mt_bs_cat_d:"Sector risk premium",mt_bs_map:"Mapping to levels:",mt_ag_t:"Score Aggregation",mt_ag_d:"Asset Risk is computed as a weighted average: each asset's base score is multiplied by its share and summed. The remaining five components are added on top, and the total is clamped to 0-100.",mt_ex_t:"Worked Example",mt_ex_d:"Portfolio: BTC 50% · ETH 25% · PEPE 25%. Walking through every component:",mt_ex_s1:"<strong>Asset Risk.</strong> BTC 5×0.50 = 2.5 · ETH 7×0.25 = 1.75 · PEPE 32×0.25 = 8.0 → AR = 12.3",mt_ex_s2:"<strong>Concentration.</strong> The largest position is 50% — below the 60% threshold → +0",mt_ex_s3:"<strong>Diversification.</strong> 3 assets → +10",mt_ex_s4:"<strong>Meme Penalty.</strong> PEPE sits at 25% > 20% → +10",mt_ex_s5:"<strong>Small-Cap Penalty.</strong> PEPE is catalogued as mid-cap → +0",mt_ex_s6:"<strong>Age Penalty.</strong> Young projects make up 25% > 20% → +10",mt_ex_ver:"Medium risk",mt_ex_take:"A quarter of the portfolio in a single meme coin lifted the score from ~23 (a pure BTC/ETH mix) to 42 — three penalties fired at once.",mt_in_t:"Interpreting the Scale",mt_in_d:"How to read the final number:",mt_in_c:"What it means",mt_b1:"Comfortable for most investors",mt_b2:"A reasonable long-term structure",mt_b3:"Requires conscious position sizing",mt_b4:"Experienced investors only",mt_b5:"Speculation — treat it as a bet",mt_lm_t:"What the Model Does Not See",mt_lm_d:"Honest boundaries of the methodology — read them before trusting any score:",mt_lm_1:"<strong>No live market data.</strong> Profiles are curated; the score ignores current prices, funding rates and order-book depth.",mt_lm_2:"<strong>No correlations.</strong> Assets are treated as independent — in reality most altcoins move with BTC, amplifying real drawdowns.",mt_lm_3:"<strong>No event risk.</strong> Hacks, depegs, delistings and regulatory shocks stay outside the model.",mt_lm_4:"<strong>No position-size context.</strong> The same score means different things for a $100 and a $100,000 portfolio.",mt_lm_5:"<strong>Not a forecast.</strong> The score measures structural risk, not the probability of profit or loss.",mt_dp_t:"Data & Updates",mt_dp_d:"The catalog covers the top-100 assets by market capitalization. The list, categories and base scores are reviewed periodically by the team; between reviews the data stays static by design — score reproducibility matters more than freshness.",
+ds_t:"Terms of Use & Disclaimer",ds_upd:"Last updated: August 2026",ds_warn:"Please read this document carefully before using Crypto Portfolio Risk Analyzer.",ds_1_t:"No Investment Advice",ds_1_d:"All materials, scores, analyses and recommendations published by the service are for informational and educational purposes only. They are not investment advice, an offer or a solicitation to buy or sell any asset. Every decision you make is your own responsibility.",ds_2_t:"Nature of the Analysis",ds_2_d:"The risk score is the output of a heuristic model built on simplified assumptions. The model does not take into account your financial situation, goals or risk tolerance, and cannot replace professional advice.",ds_3_t:"Crypto Asset Risks",ds_3_d:"Cryptocurrencies are extremely volatile instruments. Prices can move tens of percent in a day, and individual assets can lose most or all of their value. Markets operate 24/7 with no circuit breakers. Only invest funds whose full loss you can afford.",ds_4_t:"Data Accuracy",ds_4_d:"Catalog data — categories, volatility grades, base scores — is provided \"as is\". Despite careful curation, errors and omissions are possible. We do not guarantee the completeness or timeliness of the data.",ds_5_t:"Limitation of Liability",ds_5_d:"The creators and operators of the service shall not be liable for any direct or indirect losses, lost profits or damages arising from the use of the tool or reliance on its results.",ds_6_t:"Privacy & Local Storage",ds_6_d:"Your portfolio is stored exclusively in your browser (localStorage) and is never transmitted to our servers. Clearing site data removes it irreversibly. Anonymous usage statistics are collected by Yandex Metrika to improve the service.",ds_7_t:"External Links",ds_7_d:"The service may link to third-party resources. We are not responsible for their content or privacy practices.",ds_8_t:"Changes to These Terms",ds_8_d:"The terms may be updated without notice. The revision date is shown at the top of this page; continued use of the service means acceptance of the changes.",ds_9_t:"Contact",ds_9_d:"Questions about these terms? Send them via the contact form — we usually reply within 24 hours.",ds_acc:"By using Crypto Portfolio Risk Analyzer you confirm that you have read and accepted these terms.",ds_back:"Back to calculator",ds_ask:"Ask a question",
+ab_t:"About This Project",ab_i:"Crypto Portfolio Risk Analyzer is a free, privacy-first web tool that helps crypto investors understand and quantify the risk level of their cryptocurrency portfolios.",ab_u:"What Makes It Unique",ab_1:"<strong>100% Client-Side:</strong> All calculations happen in your browser. Your data never leaves your device.",ab_2:"<strong>Multi-Factor Analysis:</strong> We analyze 6 different risk factors for a comprehensive view.",ab_3:"<strong>100 Curated Assets:</strong> Top-100 cryptocurrencies with accurate risk profiles.",ab_4:"<strong>Instant Results:</strong> Get your risk score (0-100) instantly with actionable recommendations.",ab_w:"Who Is It For?",ab_u1:"<strong>Beginner Investors:</strong> Understand your risk exposure before investing.",ab_u2:"<strong>Intermediate Investors:</strong> Validate your portfolio construction.",ab_u3:"<strong>Portfolio Managers:</strong> Quick risk assessment tool.",feed_b:"Send feedback",kb_vl:"Very Low — Conservative portfolio",kb_l:"Low — Mostly stable assets",kb_m:"Medium — Balanced mix",kb_h:"High — Volatile assets exposure",ct_t:"Contact Us",ct_i:"Have questions, feedback, or suggestions? Fill out the form below and we'll respond via Telegram.",rt_t:"Response Time",rt_d:'We typically respond within 24 hours. For urgent matters, please mention "urgent" in your message.',cm_t:"Send Message to Developer",cm_d:"Fill in the form below and we'll reply via Telegram.",mr_t:"Message Ready!",mr_d:"Your message is ready to be sent. Copy it below and send via Telegram.",cp_m:"Copy Message",op_tg:"Open Telegram",cl:"Close",f_name:"Your Name",f_ct:"Contact for Reply",f_sub:"Subject",f_msg:"Message",f_name_ph:"John Doe",f_ct_ph:"Telegram @username or email",f_sub_ph:"Choose a subject",f_msg_ph:"Describe your question or feedback...",s_q:"General Question",s_bug:"Bug Report",s_fb:"Feedback / Suggestion",s_pt:"Partnership",s_ot:"Other",send:"Send via Telegram",f_req:"Please fill all required fields",f_min:"Message must be at least 10 characters",f_all:"All",f_cat:"Category",f_mc:"Market Cap",st_tot:"Total Assets",st_avg:"Avg. Risk",st_low:"Low Risk",st_hi:"High Risk",st_meme:"Meme Coins",c_soV:"Store of Value",c_sm:"Smart Contract",c_me:"Meme",c_de:"DeFi",c_pa:"Payment",c_ex:"Exchange Token",c_or:"Oracle",c_in:"Interoperability",c_ga:"Gaming/Metaverse",c_l2:"Layer 2",c_ai:"AI",c_rw:"RWA",c_st:"Storage",c_sb:"Stablecoin",c_dp:"DePIN",c_if:"Infrastructure",c_pr:"Privacy",m_lg:"Large Cap",m_md:"Mid Cap",m_sm:"Small Cap",v_vl:"Very Low",v_lo:"Low",v_md:"Medium",v_hi:"High",v_vh:"Very High",a_vh:"Established (8+ yrs)",a_hi:"Mature (5-8 yrs)",a_md:"Growing (2-5 yrs)",a_lo:"New (< 2 yrs)",r_lev:"Risk Level",b_sc:"Base Score",vol:"Volatility",m_cap:"Market Cap",age:"Project Age",cat:"Category",t_sym:"Trading ticker on exchanges",t_nm:"Full official name of the asset",t_cat:"Sector classification defining the asset's primary use case and risk category",t_vol:"Typical magnitude of price fluctuations. Higher = larger swings = higher risk",t_mc:"Total market value. Large caps are more liquid and stable",t_age:"Time since project launch. Older projects have proven track records",t_bs:"Internal risk score (2-35). Calculated from volatility, market cap, age, and category",t_rl:"Classification based on base score: Low (2-10), Medium (11-18), High (19-25), Very High (26+)",no_res:"No assets found matching your criteria",l_lo:"Low",l_md:"Medium",l_hi:"High",l_vh:"Very High",r_w:"Risk",t_cp:"Copied to clipboard",t_mx:"Maximum assets reached",t_al:"Asset already in portfolio",t_tp:"Template applied",t_sv:"Portfolio saved!",t_ld:"Portfolio loaded!",t_ss:"Failed to generate screenshot",t_mc:"Message copied! Paste it in Telegram",ft_ab:"About Project",ft_ab_d:"Free privacy-first tool to analyze the risk level of any cryptocurrency portfolio. 100% client-side.",ft_to:"Tools",ft_re:"Resources",ft_fo:"Follow Us",ft_bl:"CryptoNews Blog",ft_pr:"Privacy",ft_te:"Disclaimer",ft_lo:"All calculations performed locally",s_vl:"Very Low",s_lo:"Low"},
+ru:{menu:"Меню",t_calc:"Калькулятор",t_assets:"Все активы",t_about:"О проекте",t_kb:"База знаний",t_meth:"Методология",t_disc:"Дисклеймер",t_contact:"Контакты",c_btn:"Связь",title:"Калькулятор риска крипто-портфеля",sub:"Узнайте, насколько рискован ваш крипто-портфель.",your_port:"Ваш портфель",assets_w:"активов",quick_tpl:"Быстрые шаблоны",tpl_c:"Консервативный",tpl_b:"Сбалансированный",tpl_g:"Рост",tpl_a:"Агрессивный",tpl_a_d:"Альткоины, Мемы, ИИ",add_asset:"Добавить актив",total_al:"Общая доля",tot_err:"Сумма долей должна равняться 100%.",analyze:"Проанализировать портфель",sh_tip:"Поделиться результатом в виде изображения",sh_res:"Поделиться",summary:"Резюме",cp_res:"Скопировать",r_break:"Разбивка рисков",pos_f:"Положительные факторы",risk_f:"Факторы риска",recs:"Рекомендации",has_q:"Есть вопросы по результату?",ask_dev:"Спросить разработчика",ct_dev:"Связаться с разработчиком",disc_t:"Важное предупреждение",disc_p1:"Информация предоставляется исключительно в образовательных целях. Анализ риска и рекомендации не являются инвестиционным советом.",disc_p2:"Инвестиции в криптовалюты сопряжены с высоким рыночным риском, волатильностью и возможной потерей капитала. Прошлые результаты не гарантируют будущих.",disc_p3:"Создатели и операторы сервиса не несут ответственности за убытки, возникшие в результате использования данного инструмента.",disc_full:"Открыть полный дисклеймер",read_m:"Читать далее",show_l:"Свернуть",all_t:"Все 100 активов",all_tt:"Полный каталог топ-100 крипто-активов по капитализации с полными профилями риска.",all_d:"Ищите, фильтруйте и изучайте подробные профили риска каждого актива.",search_ph:"Поиск по символу, названию или категории...",f_btn:"Фильтры",sh_all:"Смотреть все 100 активов",sh_less:"Свернуть список",mg_t:"Как читать метрики активов",mg_d:"Что означает каждый показатель в каталоге — все объяснения в одном месте, без наведения курсора.",mg_sym:"Символ",mg_nm:"Название",sh_dl_t:"Скриншот готов",sh_dl:"Скачать",sh_fb:"Ваш браузер не поддерживает нативную функцию «Поделиться» — скопируйте или сохраните скриншот и отправьте его вручную.",sh_ci:"Скопировать изображение",sh_cok:"Изображение скопировано",sh_cer:"Не удалось скопировать изображение",sh_ok:"Результат отправлен",
+kb_intro:"Всё, что нужно для работы с анализатором: как он устроен, что означает каждое число и ответы на самые частые вопросы.",kb_gs:"С чего начать",kb_gd:"Пять шагов от пустого портфеля до полного отчёта о рисках:",kb_s1:"<strong>Добавьте активы.</strong> Нажмите «Добавить актив» и выберите монету из каталога — работает поиск по тикеру и названию. В одном портфеле можно держать до 100 различных активов.",kb_s2:"<strong>Укажите доли.</strong> Введите процент для каждого актива или выберите пресет из выпадающего списка. Сумма должна равняться ровно 100% — анализатор следит за этим.",kb_s3:"<strong>Попробуйте шаблоны.</strong> Откройте «Быстрые шаблоны», чтобы загрузить готовую стратегию — Консервативный, Сбалансированный, Рост или Агрессивный — и доработать её под себя.",kb_s4:"<strong>Запустите анализ.</strong> Когда сумма достигнет 100%, нажмите «Проанализировать портфель». Вы получите оценку 0-100, уровень и детальную разбивку по факторам.",kb_s5:"<strong>Сохраните и поделитесь.</strong> Портфель сохраняется в браузере автоматически. Скопируйте отчёт текстом или поделитесь им как изображением через системное меню.",
+kb_ft:"Все возможности сервиса",kb_fd:"Полный обзор того, что умеет анализатор — без скрытых уголков.",kb_f1_t:"Конструктор портфеля",kb_f1_d:"Собирайте портфель из 100 проверенных активов: живой поиск, бейджи риска у каждой монеты, ввод долей с быстрыми пресетами от 5% до 100%.",kb_f2_t:"Быстрые шаблоны",kb_f2_d:"Четыре готовые стратегии — для старта или для сравнения собственной идеи с эталоном.",kb_f3_t:"Автосохранение в браузере",kb_f3_d:"Портфель хранится в localStorage — закройте вкладку и продолжите с того же места. Горячие клавиши: Ctrl+S — сохранить, Ctrl+L — загрузить.",kb_f4_t:"Оценка риска 0-100",kb_f4_d:"Одно сравнимое число для любого портфеля, пять уровней от «Очень низкого» до «Очень высокого» и анимированная шкала.",kb_f5_t:"Разбивка по шести факторам",kb_f5_d:"Видно, что именно формирует оценку: риск активов, концентрация, диверсификация, мем-экспозиция, small cap и возраст проектов — с вкладом каждого.",kb_f6_t:"Практичные выводы",kb_f6_d:"Отчёт показывает, что работает в вашу пользу, что добавляет риска, и даёт конкретные рекомендации по улучшению структуры.",kb_f7_t:"Сводная таблица портфеля",kb_f7_d:"Все активы в одной таблице: категория, волатильность, капитализация, возраст, базовый балл и доля.",kb_f8_t:"Копирование и шеринг",kb_f8_d:"Скопируйте полный отчёт текстом в один клик или создайте скриншот и поделитесь им через нативное меню — Telegram, мессенджеры, соцсети.",kb_f9_t:"Каталог из 100 активов",kb_f9_d:"Отдельная вкладка со всеми монетами: поиск, фильтры по категории и капитализации, сводная статистика и полный профиль риска каждого актива.",kb_f10_t:"Приватность по умолчанию",kb_f10_d:"Все расчёты выполняются в браузере. Портфель не покидает устройство — без аккаунтов, серверов и сбора данных.",kb_f11_t:"Два языка",kb_f11_d:"Английский и русский, переключаются мгновенно в верхней панели. Выбор запоминается.",kb_f12_t:"Работает везде",kb_f12_d:"Полностью адаптивная вёрстка для десктопа, планшета и телефона — включая подсказки.",
+kb_rs:"Как читать оценку риска",kb_rd:"Шкала 0-100 разделена на пять диапазонов. Что каждый из них означает на практике:",lv_vl:"Очень низкий",lv_l:"Низкий",lv_m:"Средний",lv_h:"Высокий",lv_vh:"Очень высокий",kb_lv_vl_d:"Стабильный, зрелый портфель. Основа — крупные устоявшиеся активы; просадки обычно мягче средних по рынку.",kb_lv_l_d:"Крепкая структура с надёжным ядром. Волатильность присутствует, но основа удерживает общий риск.",kb_lv_m_d:"Сбалансированный микс с заметной долей волатильных активов. Будьте готовы к ощутимым колебаниям — размер позиций имеет значение.",kb_lv_h_d:"Агрессивный уклон. Концентрация или высокая доля альткоинов и мемов даёт резкие просадки; требуется активное управление.",kb_lv_vh_d:"Спекулятивный портфель. Основная стоимость — в молодых, мелких или мем-активах; в плохом сценарии возможна полная потеря капитала.",kb_lv_ex:"Типичный пример:",kb_lv_vl_ex:"BTC 60% · ETH 30% · USDC 10%",kb_lv_l_ex:"BTC 40% · ETH 30% · SOL 15% · LINK 15%",kb_lv_m_ex:"ETH 40% · SOL 20% · UNI 20% · AAVE 20%",kb_lv_h_ex:"SOL 35% · AVAX 25% · DOGE 20% · FET 20%",kb_lv_vh_ex:"PEPE 30% · WIF 25% · BONK 25% · AI16Z 20%",
+kb_tp:"Как снизить риск",kb_t1:"Держите 50-70% в BTC и ETH — самых проверенных активах рынка",kb_t2:"Диверсифицируйте на 5-10 активов: модель поощряет широту",kb_t3:"Держите мем-коины ниже 10% — после 20% включаются жёсткие штрафы",kb_t4:"Ограничьте small cap 30%, чтобы защитить ликвидность",kb_t5:"Добавьте 5-15% стейблкоинов — резерв на время просадок",kb_t6:"Избегайте портфелей из одного актива — штраф за диверсификацию +20",kb_t7:"Следите за возрастом: активы младше 2 лет дают штраф при доле выше 20%",kb_t8:"Пересчитывайте риск после каждого ребаланса — оценка меняется вместе со структурой",
+kb_faq:"Частые вопросы",kb_q1:"Сервис хранит мой портфель?",kb_a1:"Только в localStorage вашего браузера. Ничего не отправляется на сервер. Очистка данных сайта удалит портфель; Ctrl+L загружает последнюю сохранённую версию.",kb_q2:"Цены и баллы обновляются в реальном времени?",kb_a2:"Нет. Профили риска курируются и периодически пересматриваются. Модель оценивает структуру портфеля, а не текущую конъюнктуру — поэтому оценка не зависит от колебаний цен.",kb_q3:"Почему сумма долей должна быть ровно 100%?",kb_a3:"Оценка — взвешенное среднее рисков активов. Если веса не дают 100%, математика незаметно искажается, поэтому анализатор блокирует расчёт.",kb_q4:"Моей монеты нет в каталоге. Можно её добавить?",kb_a4:"Каталог ограничен топ-100, чтобы профили риска оставались надёжными. Если крупный актив отсутствует — напишите нам через форму обратной связи.",kb_q5:"Низкая оценка значит, что я не могу потерять деньги?",kb_a5:"Ни в коем случае. Даже портфель с очень низким риском может терять стоимость — криптовалюты волатильны по своей природе. Оценка сравнивает структуры, а не предсказывает цены.",kb_q6:"Это инвестиционная рекомендация?",kb_a6:"Нет. Инструмент носит образовательный характер. Прочитайте полный дисклеймер перед принятием решений — и никогда не инвестируйте больше, чем готовы потерять.",kb_q7:"Как поделиться результатом?",kb_a7:"Нажмите «Поделиться» под оценкой. На телефоне и в поддерживающих браузерах откроется системное меню со скриншотом; в остальных можно скопировать изображение или скачать его.",kb_q8:"Есть горячие клавиши?",kb_a8:"Ctrl+S — принудительно сохранить портфель, Ctrl+L — загрузить сохранённый, Esc — закрыть любое открытое меню или диалог.",
+mt_intro:"Полное описание модели: как назначаются базовые баллы, как шесть факторов складываются в одно число и — что не менее важно — что модель сознательно игнорирует.",mt_ph_t:"Принципы",mt_ph_1:"<strong>Одно число.</strong> Любой портфель сводится к сравнимой оценке 0-100.",mt_ph_2:"<strong>Прозрачность.</strong> Каждый балл оценки прослеживается до конкретного правила.",mt_ph_3:"<strong>Консерватизм.</strong> При сомнении модель скорее завышает риск, чем занижает.",mt_ph_4:"<strong>Структура важнее цены.</strong> Мы оцениваем то, что вы держите, а не то, что происходит на рынке.",mt_f:"Формула",mt_f_d:"Итоговая оценка — сумма шести компонентов, ограниченная диапазоном 0-100:",mt_ar_n:"Риск активов",mt_ar_w:"≈ 2-35 баллов",mt_ar_d:"Фундамент оценки. Каждый актив имеет базовый балл риска от 2 до 35; компонент — средневзвешенное по долям портфеля.",mt_ar_r:"Портфель из полностью надёжных активов дал бы около 2; портфель целиком из мем-коинов — около 35.",mt_co_n:"Концентрация",mt_co_w:"0 / +10 / +20 баллов",mt_co_d:"Единые точки отказа. Если один актив превышает 60% портфеля, добавляется +10; выше 80% — +20.",mt_co_r:"Даже голубая фишка становится системным риском вашего портфеля, когда доминирует в нём.",mt_dv_n:"Диверсификация",mt_dv_w:"+20 / +15 / +10 / 0 баллов",mt_dv_d:"Штраф за узость: 1 актив = +20, 2 = +15, 3 = +10, 4 и более = 0.",mt_dv_r:"Диверсификация не убирает рыночный риск крипты, но убирает идиосинкратический — взломы, раг-пуллы, гибель проектов.",mt_mp_n:"Штраф за мемы",mt_mp_w:"0 / +10 / +20 баллов",mt_mp_d:"Спекулятивная надбавка: мем-коины свыше 20% портфеля дают +10, свыше 40% — +20.",mt_mp_r:"Мем-активы движимы вниманием, а не фундаменталом — их просадки самые глубокие на рынке.",mt_sp_n:"Штраф за Small Cap",mt_sp_w:"0 / +15 баллов",mt_sp_d:"Надбавка за ликвидность: более 30% в мелких активах дают +15.",mt_sp_r:"Small cap тонкие: проскальзывание при выходе и риск манипуляций растут нелинейно с размером позиции.",mt_ap_n:"Штраф за возраст",mt_ap_w:"0 / +10 баллов",mt_ap_d:"Надбавка за трек-рекорд: более 20% в проектах младше 2 лет дают +10.",mt_ap_r:"Большинство крипто-проектов гибнут в первые два года. Возраст — самый дешёвый фильтр выживаемости.",mt_bs_t:"Как формируются базовые баллы",mt_bs_d:"Каждому активу каталога команда назначает базовый балл от 2 до 35 по четырём компонентам. Таблица показывает логику; финальные значения калибруются вручную по наблюдаемому поведению рынка.",mt_bs_c1:"Компонент",mt_bs_c2:"Уровни → баллы",mt_bs_vol:"Волатильность",mt_bs_vol_d:"Типичная амплитуда колебаний — доминирующий фактор",mt_bs_mc:"Капитализация",mt_bs_mc_d:"Прокси для ликвидности и стабильности",mt_bs_age:"Возраст",mt_bs_age_d:"Трек-рекорд выживаемости",mt_bs_cat:"Категория",mt_bs_cat_d:"Секторальная премия за риск",mt_bs_map:"Отображение в уровни:",mt_ag_t:"Агрегация оценки",mt_ag_d:"Риск активов считается как средневзвешенное: базовый балл каждого актива умножается на его долю и суммируется. Сверху добавляются остальные пять компонентов, итог ограничивается 0-100.",mt_ex_t:"Разбор примера",mt_ex_d:"Портфель: BTC 50% · ETH 25% · PEPE 25%. Проходим по каждому компоненту:",mt_ex_s1:"<strong>Риск активов.</strong> BTC 5×0.50 = 2.5 · ETH 7×0.25 = 1.75 · PEPE 32×0.25 = 8.0 → AR = 12.3",mt_ex_s2:"<strong>Концентрация.</strong> Крупнейшая позиция 50% — ниже порога 60% → +0",mt_ex_s3:"<strong>Диверсификация.</strong> 3 актива → +10",mt_ex_s4:"<strong>Штраф за мемы.</strong> PEPE — 25% > 20% → +10",mt_ex_s5:"<strong>Штраф за Small Cap.</strong> PEPE в нашем каталоге — mid cap → +0",mt_ex_s6:"<strong>Штраф за возраст.</strong> Молодые проекты — 25% > 20% → +10",mt_ex_ver:"Средний риск",mt_ex_take:"Четверть портфеля в одном мем-коине подняла оценку с ~23 (чистый микс BTC/ETH) до 42 — сработали сразу три штрафа.",mt_in_t:"Интерпретация шкалы",mt_in_d:"Как читать итоговое число:",mt_in_c:"Что это значит",mt_b1:"Комфортен для большинства инвесторов",mt_b2:"Разумная долгосрочная структура",mt_b3:"Требует осознанного размера позиций",mt_b4:"Только для опытных инвесторов",mt_b5:"Спекуляция — относитесь как к ставке",mt_lm_t:"Чего модель не видит",mt_lm_d:"Честные границы методологии — прочитайте прежде, чем доверять любой оценке:",mt_lm_1:"<strong>Нет живых рыночных данных.</strong> Профили курируются; оценка игнорирует текущие цены, фандинг и глубину стакана.",mt_lm_2:"<strong>Нет корреляций.</strong> Активы рассматриваются как независимые — в реальности большинство альткоинов ходит за BTC, усиливая просадки.",mt_lm_3:"<strong>Нет событийного риска.</strong> Взломы, депреги, делистинги и регуляторные шоки остаются за рамками модели.",mt_lm_4:"<strong>Нет контекста размера.</strong> Одна и та же оценка значит разное для портфеля в $100 и $100 000.",mt_lm_5:"<strong>Не прогноз.</strong> Оценка измеряет структурный риск, а не вероятность прибыли или убытка.",mt_dp_t:"Данные и обновления",mt_dp_d:"Каталог покрывает топ-100 активов по капитализации. Список, категории и базовые баллы периодически пересматриваются командой; между пересмотрами данные статичны по дизайну — воспроизводимость оценки важнее свежести.",
+ds_t:"Условия использования и отказ от ответственности",ds_upd:"Обновлено: август 2026",ds_warn:"Пожалуйста, внимательно прочитайте этот документ перед использованием Crypto Portfolio Risk Analyzer.",ds_1_t:"Не является инвестиционной рекомендацией",ds_1_d:"Все материалы, оценки, анализы и рекомендации сервиса носят исключительно информационный и образовательный характер. Они не являются инвестиционным советом, офертой или предложением купить или продать какой-либо актив. Любые решения вы принимаете самостоятельно и под свою ответственность.",ds_2_t:"Характер анализа",ds_2_d:"Оценка риска — результат работы эвристической модели, построенной на упрощённых допущениях. Модель не учитывает ваше финансовое положение, цели и толерантность к риску и не заменяет консультацию специалиста.",ds_3_t:"Риски крипто-активов",ds_3_d:"Криптовалюты — крайне волатильные инструменты. Цены могут двигаться на десятки процентов в сутки, отдельные активы могут потерять большую часть или всю стоимость. Рынки работают 24/7 без защитных механизмов. Инвестируйте только средства, полную потерю которых вы готовы пережить.",ds_4_t:"Точность данных",ds_4_d:"Данные каталога — категории, уровни волатильности, базовые баллы — предоставляются «как есть». Несмотря на тщательную курацию, возможны ошибки и неточности. Мы не гарантируем полноту и актуальность данных.",ds_5_t:"Ограничение ответственности",ds_5_d:"Создатели и операторы сервиса не несут ответственности за прямые или косвенные убытки, упущенную выгоду или ущерб, возникшие в результате использования инструмента или опоры на его результаты.",ds_6_t:"Приватность и локальное хранение",ds_6_d:"Ваш портфель хранится исключительно в браузере (localStorage) и никогда не передаётся на наши серверы. Очистка данных сайта удаляет его безвозвратно. Анонимная статистика использования собирается Яндекс.Метрикой для улучшения сервиса.",ds_7_t:"Внешние ссылки",ds_7_d:"Сервис может содержать ссылки на сторонние ресурсы. Мы не отвечаем за их содержимое и политику конфиденциальности.",ds_8_t:"Изменение условий",ds_8_d:"Условия могут обновляться без уведомления. Дата редакции указана вверху страницы; продолжение использования сервиса означает согласие с изменениями.",ds_9_t:"Контакты",ds_9_d:"Вопросы по этим условиям отправляйте через форму обратной связи — обычно мы отвечаем в течение 24 часов.",ds_acc:"Используя Crypto Portfolio Risk Analyzer, вы подтверждаете, что прочитали и приняли эти условия.",ds_back:"К калькулятору",ds_ask:"Задать вопрос",
+ab_t:"О проекте",ab_i:"Crypto Portfolio Risk Analyzer — бесплатный инструмент, ориентированный на приватность, который помогает инвесторам оценивать уровень риска своих крипто-портфелей.",ab_u:"Что делает нас уникальными",ab_1:"<strong>100% на клиенте:</strong> Все расчёты выполняются в вашем браузере. Данные не покидают устройство.",ab_2:"<strong>Многофакторный анализ:</strong> Мы анализируем 6 факторов риска для комплексной оценки.",ab_3:"<strong>100 проверенных активов:</strong> Топ-100 криптовалют с точными профилями риска.",ab_4:"<strong>Мгновенный результат:</strong> Получите оценку риска (0-100) с практичными рекомендациями.",ab_w:"Для кого?",ab_u1:"<strong>Начинающие инвесторы:</strong> Оцените риск перед инвестированием.",ab_u2:"<strong>Опытные инвесторы:</strong> Проверьте структуру портфеля.",ab_u3:"<strong>Управляющие портфелями:</strong> Быстрый инструмент оценки риска.",feed_b:"Отправить отзыв",kb_vl:"Очень низкий — консервативный портфель",kb_l:"Низкий — в основном стабильные активы",kb_m:"Средний — сбалансированный микс",kb_h:"Высокий — волатильные активы",ct_t:"Связаться с нами",ct_i:"Есть вопросы, отзывы или предложения? Заполните форму ниже, и мы ответим через Telegram.",rt_t:"Время ответа",rt_d:"Обычно отвечаем в течение 24 часов. Для срочных вопросов пометьте сообщение как «срочно».",cm_t:"Отправить сообщение разработчику",cm_d:"Заполните форму ниже, и мы ответим через Telegram.",mr_t:"Сообщение готово!",mr_d:"Сообщение готово к отправке. Скопируйте его и отправьте через Telegram.",cp_m:"Скопировать",op_tg:"Открыть Telegram",cl:"Закрыть",f_name:"Ваше имя",f_ct:"Контакт для ответа",f_sub:"Тема",f_msg:"Сообщение",f_name_ph:"Иван Иванов",f_ct_ph:"Telegram @username или email",f_sub_ph:"Выберите тему",f_msg_ph:"Опишите ваш вопрос или отзыв...",s_q:"Общий вопрос",s_bug:"Сообщение об ошибке",s_fb:"Отзыв / Предложение",s_pt:"Партнёрство",s_ot:"Другое",send:"Отправить через Telegram",f_req:"Заполните все обязательные поля",f_min:"Сообщение должно содержать минимум 10 символов",f_all:"Все",f_cat:"Категория",f_mc:"Капитализация",st_tot:"Всего активов",st_avg:"Ср. риск",st_low:"Низкий риск",st_hi:"Высокий риск",st_meme:"Мем-коины",c_soV:"Хранение стоимости",c_sm:"Смарт-контракты",c_me:"Мем",c_de:"DeFi",c_pa:"Платежи",c_ex:"Биржевой токен",c_or:"Оракул",c_in:"Интероперабельность",c_ga:"Игры/Метавселенные",c_l2:"Layer 2",c_ai:"ИИ",c_rw:"RWA",c_st:"Хранилище",c_sb:"Стейблкоин",c_dp:"DePIN",c_if:"Инфраструктура",c_pr:"Приватность",m_lg:"Крупная",m_md:"Средняя",m_sm:"Малая",v_vl:"Очень низкая",v_lo:"Низкая",v_md:"Средняя",v_hi:"Высокая",v_vh:"Очень высокая",a_vh:"Устоявшийся (8+ лет)",a_hi:"Зрелый (5-8 лет)",a_md:"Растущий (2-5 лет)",a_lo:"Новый (< 2 лет)",r_lev:"Уровень риска",b_sc:"Базовый балл",vol:"Волатильность",m_cap:"Капитализация",age:"Возраст проекта",cat:"Категория",t_sym:"Тикер на биржах",t_nm:"Полное официальное название актива",t_cat:"Секторальная классификация, определяющая основной вариант использования и категорию риска",t_vol:"Типичная амплитуда колебаний цены. Выше = сильнее колебания = выше риск",t_mc:"Общая рыночная стоимость. Крупные активы более ликвидны и стабильны",t_age:"Время с запуска проекта. Старые проекты имеют подтверждённую репутацию",t_bs:"Внутренняя оценка риска (2-35). Рассчитывается по волатильности, капитализации, возрасту и категории",t_rl:"Классификация на основе балла: Низкий (2-10), Средний (11-18), Высокий (19-25), Очень высокий (26+)",no_res:"По вашему запросу ничего не найдено",l_lo:"Низкий",l_md:"Средний",l_hi:"Высокий",l_vh:"Очень высокий",r_w:"риск",t_cp:"Скопировано",t_mx:"Достигнут лимит активов",t_al:"Актив уже в портфеле",t_tp:"Шаблон применён",t_sv:"Портфель сохранён!",t_ld:"Портфель загружен!",t_ss:"Не удалось создать скриншот",t_mc:"Сообщение скопировано! Вставьте в Telegram",ft_ab:"О проекте",ft_ab_d:"Бесплатный приватный инструмент для анализа уровня риска любого крипто-портфеля. 100% работает в браузере.",ft_to:"Инструменты",ft_re:"Ресурсы",ft_fo:"Следите за нами",ft_bl:"Блог CryptoNews",ft_pr:"Приватность",ft_te:"Предупреждение",ft_lo:"Все расчёты выполняются локально",s_vl:"Очень низкий",s_lo:"Низкий"}
+};
+var lang=(function(){try{return ls.getItem('lang')||'en'}catch(e){return'en'}})();
+function t(k){return(L[lang]&&L[lang][k])||L.en[k]||k}
+function applyL(){
+hideTip();
+doc.documentElement.lang=lang;
+$$('[data-i18n]').forEach(function(el){var v=t(el.getAttribute('data-i18n'));if(v)el.innerHTML=v});
+$$('[data-i18n-ph]').forEach(function(el){el.placeholder=t(el.getAttribute('data-i18n-ph'))});
+var cb=$('#ccb');if(cb)cb.textContent=CD.length+' '+t('assets_w');
+$$('.lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
+renderAll();renderKB();renderMeth();renderDisc();buildCF('cft');
+if($('#cm').classList.contains('active'))buildCF('cfm');
+}
+function setLang(l){lang=l;try{ls.setItem('lang',l)}catch(e){}applyL()}
+function switchTab(tab){
+hideTip();
+$$('.tab').forEach(function(t){t.classList.remove('active')});
+var el=$('#tab-'+tab);if(el)el.classList.add('active');
+$$('.sb-item').forEach(function(i){i.classList.remove('active')});
+var s=$('.sb-item[data-tab="'+tab+'"]');if(s)s.classList.add('active');
+win.scrollTo({top:0,behavior:'smooth'});
+if(tab==='assets')renderAll();
+}
+win.switchTab=switchTab;
+var CD=[
+{s:"BTC",n:"Bitcoin",c:"Store of Value",v:"Low",m:"Large",a:"Very High",b:5},
+{s:"ETH",n:"Ethereum",c:"Smart Contract",v:"Medium",m:"Large",a:"High",b:7},
+{s:"XRP",n:"XRP",c:"Payment",v:"Medium",m:"Large",a:"High",b:10},
+{s:"USDT",n:"Tether",c:"Stablecoin",v:"Very Low",m:"Large",a:"High",b:2},
+{s:"BNB",n:"BNB",c:"Exchange Token",v:"Medium",m:"Large",a:"High",b:9},
+{s:"SOL",n:"Solana",c:"Smart Contract",v:"High",m:"Large",a:"Medium",b:12},
+{s:"USDC",n:"USD Coin",c:"Stablecoin",v:"Very Low",m:"Large",a:"Medium",b:2},
+{s:"DOGE",n:"Dogecoin",c:"Meme",v:"Very High",m:"Large",a:"Medium",b:25},
+{s:"TRX",n:"TRON",c:"Payment",v:"Medium",m:"Large",a:"High",b:11},
+{s:"ADA",n:"Cardano",c:"Smart Contract",v:"High",m:"Large",a:"Medium",b:12},
+{s:"LINK",n:"Chainlink",c:"Oracle",v:"High",m:"Large",a:"Medium",b:13},
+{s:"AVAX",n:"Avalanche",c:"Smart Contract",v:"High",m:"Large",a:"Medium",b:14},
+{s:"XLM",n:"Stellar",c:"Payment",v:"High",m:"Medium",a:"High",b:10},
+{s:"SUI",n:"Sui",c:"Smart Contract",v:"Very High",m:"Medium",a:"Low",b:22},
+{s:"HBAR",n:"Hedera",c:"Smart Contract",v:"High",m:"Medium",a:"Medium",b:14},
+{s:"TON",n:"Toncoin",c:"Smart Contract",v:"High",m:"Medium",a:"Low",b:16},
+{s:"SHIB",n:"Shiba Inu",c:"Meme",v:"Very High",m:"Medium",a:"Medium",b:28},
+{s:"BCH",n:"Bitcoin Cash",c:"Store of Value",v:"High",m:"Medium",a:"High",b:11},
+{s:"LTC",n:"Litecoin",c:"Store of Value",v:"Medium",m:"Medium",a:"Very High",b:8},
+{s:"UNI",n:"Uniswap",c:"DeFi",v:"Very High",m:"Medium",a:"Medium",b:16},
+{s:"POL",n:"Polygon",c:"Layer 2",v:"High",m:"Medium",a:"Medium",b:12},
+{s:"NEAR",n:"NEAR Protocol",c:"Smart Contract",v:"High",m:"Medium",a:"Medium",b:14},
+{s:"APT",n:"Aptos",c:"Smart Contract",v:"Very High",m:"Medium",a:"Low",b:20},
+{s:"ICP",n:"Internet Computer",c:"Smart Contract",v:"Very High",m:"Medium",a:"Medium",b:16},
+{s:"ONDO",n:"Ondo Finance",c:"RWA",v:"Very High",m:"Medium",a:"Low",b:20},
+{s:"PEPE",n:"Pepe",c:"Meme",v:"Very High",m:"Medium",a:"Low",b:32},
+{s:"ATOM",n:"Cosmos",c:"Interoperability",v:"High",m:"Medium",a:"Medium",b:13},
+{s:"ETC",n:"Ethereum Classic",c:"Store of Value",v:"Very High",m:"Small",a:"High",b:17},
+{s:"KAS",n:"Kaspa",c:"Smart Contract",v:"Very High",m:"Medium",a:"Low",b:20},
+{s:"RENDER",n:"Render",c:"AI",v:"Very High",m:"Medium",a:"Medium",b:17},
+{s:"FET",n:"ASI Alliance",c:"AI",v:"Very High",m:"Medium",a:"Medium",b:18},
+{s:"ARB",n:"Arbitrum",c:"Layer 2",v:"Very High",m:"Medium",a:"Low",b:18},
+{s:"OP",n:"Optimism",c:"Layer 2",v:"Very High",m:"Medium",a:"Low",b:19},
+{s:"STX",n:"Stacks",c:"Smart Contract",v:"Very High",m:"Medium",a:"Medium",b:16},
+{s:"INJ",n:"Injective",c:"Smart Contract",v:"Very High",m:"Medium",a:"Medium",b:17},
+{s:"IMX",n:"Immutable",c:"Gaming/Metaverse",v:"Very High",m:"Medium",a:"Medium",b:17},
+{s:"FIL",n:"Filecoin",c:"Storage",v:"High",m:"Medium",a:"Medium",b:14},
+{s:"TAO",n:"Bittensor",c:"AI",v:"Very High",m:"Medium",a:"Low",b:22},
+{s:"OKB",n:"OKB",c:"Exchange Token",v:"Medium",m:"Medium",a:"Medium",b:11},
+{s:"BGB",n:"Bitget Token",c:"Exchange Token",v:"High",m:"Medium",a:"Medium",b:14},
+{s:"CRO",n:"Cronos",c:"Exchange Token",v:"High",m:"Small",a:"Medium",b:16},
+{s:"WLD",n:"Worldcoin",c:"AI",v:"Very High",m:"Medium",a:"Low",b:25},
+{s:"VET",n:"VeChain",c:"Smart Contract",v:"High",m:"Small",a:"High",b:14},
+{s:"ALGO",n:"Algorand",c:"Smart Contract",v:"High",m:"Small",a:"Medium",b:15},
+{s:"SEI",n:"Sei",c:"Smart Contract",v:"Very High",m:"Small",a:"Low",b:23},
+{s:"BONK",n:"Bonk",c:"Meme",v:"Very High",m:"Small",a:"Low",b:33},
+{s:"JUP",n:"Jupiter",c:"DeFi",v:"Very High",m:"Medium",a:"Low",b:21},
+{s:"TIA",n:"Celestia",c:"Interoperability",v:"Very High",m:"Small",a:"Low",b:22},
+{s:"WIF",n:"dogwifhat",c:"Meme",v:"Very High",m:"Small",a:"Low",b:35},
+{s:"ENA",n:"Ethena",c:"DeFi",v:"Very High",m:"Medium",a:"Low",b:23},
+{s:"AAVE",n:"Aave",c:"DeFi",v:"Very High",m:"Medium",a:"Medium",b:16},
+{s:"DOT",n:"Polkadot",c:"Interoperability",v:"High",m:"Medium",a:"Medium",b:13},
+{s:"MKR",n:"Maker",c:"DeFi",v:"High",m:"Medium",a:"High",b:14},
+{s:"GRT",n:"The Graph",c:"Infrastructure",v:"Very High",m:"Medium",a:"Medium",b:18},
+{s:"XTZ",n:"Tezos",c:"Smart Contract",v:"High",m:"Small",a:"High",b:14},
+{s:"EGLD",n:"MultiversX",c:"Smart Contract",v:"Very High",m:"Small",a:"Medium",b:19},
+{s:"ZEC",n:"Zcash",c:"Privacy",v:"High",m:"Small",a:"High",b:15},
+{s:"DASH",n:"Dash",c:"Payment",v:"High",m:"Small",a:"Very High",b:13},
+{s:"NEO",n:"Neo",c:"Smart Contract",v:"High",m:"Small",a:"Very High",b:14},
+{s:"WAVES",n:"Waves",c:"Smart Contract",v:"Very High",m:"Small",a:"High",b:19},
+{s:"ENJ",n:"Enjin",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Medium",b:22},
+{s:"SAND",n:"The Sandbox",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Medium",b:23},
+{s:"MANA",n:"Decentraland",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Medium",b:23},
+{s:"AXS",n:"Axie Infinity",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Medium",b:24},
+{s:"GALA",n:"Gala",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Medium",b:25},
+{s:"CHZ",n:"Chiliz",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Medium",b:22},
+{s:"FLOW",n:"Flow",c:"Smart Contract",v:"Very High",m:"Small",a:"Medium",b:20},
+{s:"MINA",n:"Mina",c:"Smart Contract",v:"Very High",m:"Small",a:"Low",b:22},
+{s:"ROSE",n:"Oasis Network",c:"Privacy",v:"Very High",m:"Small",a:"Medium",b:21},
+{s:"ZIL",n:"Zilliqa",c:"Smart Contract",v:"Very High",m:"Small",a:"High",b:19},
+{s:"IOTA",n:"IOTA",c:"Interoperability",v:"High",m:"Small",a:"Very High",b:14},
+{s:"ONE",n:"Harmony",c:"Smart Contract",v:"Very High",m:"Small",a:"Medium",b:21},
+{s:"HOT",n:"Holo",c:"Infrastructure",v:"Very High",m:"Small",a:"High",b:23},
+{s:"KAVA",n:"Kava",c:"DeFi",v:"Very High",m:"Small",a:"Medium",b:20},
+{s:"LRC",n:"Loopring",c:"Layer 2",v:"Very High",m:"Small",a:"High",b:19},
+{s:"ANKR",n:"Ankr",c:"Infrastructure",v:"Very High",m:"Small",a:"Medium",b:21},
+{s:"STORJ",n:"Storj",c:"Storage",v:"Very High",m:"Small",a:"High",b:18},
+{s:"MASK",n:"Mask Network",c:"Privacy",v:"Very High",m:"Small",a:"Medium",b:22},
+{s:"BLUR",n:"Blur",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Low",b:27},
+{s:"PYTH",n:"Pyth Network",c:"Oracle",v:"Very High",m:"Medium",a:"Low",b:22},
+{s:"W",n:"Wormhole",c:"Interoperability",v:"Very High",m:"Medium",a:"Low",b:22},
+{s:"ZK",n:"zkSync",c:"Layer 2",v:"Very High",m:"Medium",a:"Low",b:23},
+{s:"STRK",n:"Starknet",c:"Layer 2",v:"Very High",m:"Medium",a:"Low",b:23},
+{s:"MANTA",n:"Manta Network",c:"Layer 2",v:"Very High",m:"Small",a:"Low",b:24},
+{s:"DYM",n:"Dymension",c:"Interoperability",v:"Very High",m:"Small",a:"Low",b:26},
+{s:"PIXEL",n:"Pixels",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Low",b:29},
+{s:"PORTAL",n:"Portal",c:"Gaming/Metaverse",v:"Very High",m:"Small",a:"Low",b:28},
+{s:"JTO",n:"Jito",c:"DeFi",v:"Very High",m:"Medium",a:"Low",b:22},
+{s:"FLOKI",n:"FLOKI",c:"Meme",v:"Very High",m:"Small",a:"Medium",b:32},
+{s:"BOME",n:"BOOK OF MEME",c:"Meme",v:"Very High",m:"Small",a:"Low",b:35},
+{s:"POPCAT",n:"Popcat",c:"Meme",v:"Very High",m:"Small",a:"Low",b:34},
+{s:"MOG",n:"Mog Coin",c:"Meme",v:"Very High",m:"Small",a:"Low",b:34},
+{s:"CRV",n:"Curve DAO",c:"DeFi",v:"Very High",m:"Small",a:"Medium",b:20},
+{s:"SNX",n:"Synthetix",c:"DeFi",v:"Very High",m:"Small",a:"High",b:18},
+{s:"COMP",n:"Compound",c:"DeFi",v:"Very High",m:"Small",a:"Medium",b:17},
+{s:"SUSHI",n:"SushiSwap",c:"DeFi",v:"Very High",m:"Small",a:"Medium",b:21},
+{s:"1INCH",n:"1inch",c:"DeFi",v:"Very High",m:"Small",a:"Medium",b:20},
+{s:"LDO",n:"Lido DAO",c:"DeFi",v:"Very High",m:"Medium",a:"Medium",b:17},
+{s:"PENDLE",n:"Pendle",c:"DeFi",v:"Very High",m:"Small",a:"Medium",b:21},
+{s:"SAFE",n:"Safe",c:"Infrastructure",v:"Very High",m:"Small",a:"Medium",b:19},
+{s:"BERA",n:"Berachain",c:"Smart Contract",v:"Very High",m:"Medium",a:"Low",b:24},
+{s:"HYPE",n:"Hyperliquid",c:"DeFi",v:"Very High",m:"Medium",a:"Low",b:23},
+{s:"VIRTUAL",n:"Virtuals Protocol",c:"AI",v:"Very High",m:"Small",a:"Low",b:28},
+{s:"AI16Z",n:"ai16z",c:"AI",v:"Very High",m:"Small",a:"Low",b:30},
+{s:"MOVE",n:"Movement",c:"Layer 2",v:"Very High",m:"Medium",a:"Low",b:23},
+{s:"LAYER",n:"Solayer",c:"DeFi",v:"Very High",m:"Small",a:"Low",b:26}
+];
+CD.forEach(function(c,i){c.r=i+1});
+var CM={};CD.forEach(function(c){CM[c.s]=c});
+var GC=function(s){return CM[s]};
+var CAT_CLS={"Store of Value":"cat-sov","Smart Contract":"cat-sm","Meme":"cat-me","DeFi":"cat-de","Payment":"cat-pa","Exchange Token":"cat-ex","Oracle":"cat-or","Interoperability":"cat-in","Gaming/Metaverse":"cat-ga","Privacy":"cat-pr","Layer 2":"cat-l2","AI":"cat-ai","RWA":"cat-rw","DePIN":"cat-dp","Storage":"cat-st","Infrastructure":"cat-if","Stablecoin":"cat-sb"};
+var CAT_I18N={"Store of Value":"c_soV","Smart Contract":"c_sm","Meme":"c_me","DeFi":"c_de","Payment":"c_pa","Exchange Token":"c_ex","Oracle":"c_or","Interoperability":"c_in","Gaming/Metaverse":"c_ga","Layer 2":"c_l2","AI":"c_ai","RWA":"c_rw","Storage":"c_st","Stablecoin":"c_sb","DePIN":"c_dp","Infrastructure":"c_if","Privacy":"c_pr"};
+var PRESETS=[5,10,15,20,25,30,40,50,60,70,80,90,100];
+var TPLS={
+conservative:[{s:"BTC",a:60},{s:"ETH",a:30},{s:"USDC",a:10}],
+balanced:[{s:"BTC",a:40},{s:"ETH",a:30},{s:"SOL",a:15},{s:"LINK",a:15}],
+growth:[{s:"ETH",a:40},{s:"SOL",a:20},{s:"UNI",a:20},{s:"AAVE",a:20}],
+aggressive:[{s:"SOL",a:20},{s:"AVAX",a:15},{s:"DOGE",a:15},{s:"PEPE",a:15},{s:"FET",a:20},{s:"WLD",a:15}]
+};
+var SK='cpf_v3',MAX=100,PER=20;
+function rsColor(s){if(s<=10)return{c:'rvb',d:'#22c55e'};if(s<=18)return{c:'rlo',d:'#eab308'};if(s<=25)return{c:'rme',d:'#f97316'};return{c:'rhi',d:'#ef4444'}}
+function ageC(a){return{"Very High":"ag-vh","High":"ag-hi","Medium":"ag-md","Low":"ag-lo"}[a]||'ag-md'}
+function volC(v){return{"Very Low":"vol-lo","Low":"vol-lo","Medium":"vol-md","High":"vol-hi","Very High":"vol-vh"}[v]||'vol-md'}
+function mcC(m){return{"Large":"mc-lg","Medium":"mc-md","Small":"mc-sm"}[m]||'mc-md'}
+function save(){try{ls.setItem(SK,JSON.stringify(S.rows.map(function(r){return{s:r.s,a:r.a}})))}catch(e){}}
+function load(){try{var r=ls.getItem(SK);if(!r)return null;var d=JSON.parse(r);return Array.isArray(d)?d.filter(function(x){return x&&typeof x.s==='string'&&typeof x.a==='number'}):null}catch(e){return null}}
+function nextSym(){var u={};S.rows.forEach(function(r){u[r.s]=1});for(var i=0;i<CD.length;i++){if(!u[CD[i].s])return CD[i].s}return null}
+function toast(msg,type,dur){
+var e=$('.toast');if(e)e.parentNode.removeChild(e);
+var el=ce('div','toast '+(type||'info'));
+var ic={success:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>',error:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>',info:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'};
+el.innerHTML=(ic[type]||ic.info)+'<span>'+msg+'</span>';
+doc.body.appendChild(el);
+setTimeout(function(){el.classList.add('show')},10);
+setTimeout(function(){el.classList.remove('show');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},300)},dur||2500);
+}
+var touchMode=false;
+try{touchMode=('ontouchstart' in win)||navigator.maxTouchPoints>0}catch(e){}
+doc.addEventListener('touchstart',function(){touchMode=true},{passive:true});
+var GT=null;
+function gTipEl(){
+if(!GT){GT=ce('div','g-tip');GT.setAttribute('role','tooltip');doc.body.appendChild(GT)}
+return GT;
+}
+function hideTip(){
+if(GT)GT.classList.remove('show');
+$$('.i-btn.active').forEach(function(b){b.classList.remove('active')});
+$$('.tt.active').forEach(function(b){b.classList.remove('active')});
+S.at=null;S.mt=null;
+}
+function showGTip(anchor,html){
+var g=gTipEl();
+var was=g.classList.contains('show');
+g.innerHTML=html;
+g.classList.remove('below');
+if(!was){g.style.left='-9999px';g.style.top='0px'}
+var r=anchor.getBoundingClientRect();
+var vw=win.innerWidth||320,vh=win.innerHeight||480;
+var gw=g.offsetWidth,gh=g.offsetHeight;
+var gap=10,pad=10,below=false;
+var top=r.top-gh-gap;
+if(top<pad){below=true;top=r.bottom+gap}
+if(top+gh>vh-pad)top=Math.max(pad,vh-gh-pad);
+var left=r.left+r.width/2-gw/2;
+left=Math.max(pad,Math.min(left,vw-gw-pad));
+var ax=r.left+r.width/2-left;
+ax=Math.max(16,Math.min(ax,gw-16));
+g.style.setProperty('--ax',ax+'px');
+g.style.left=left+'px';
+g.style.top=top+'px';
+if(below)g.classList.add('below');
+if(!was){void g.offsetWidth;g.classList.add('show')}
+}
+function showTT(tt){
+var mt=tt.querySelector('.mt');
+if(!mt)return;
+$$('.tt.active').forEach(function(b){if(b!==tt)b.classList.remove('active')});
+tt.classList.add('active');
+showGTip(tt,mt.innerHTML);
+}
+doc.addEventListener('mouseover',function(e){
+if(touchMode)return;
+var tt=e.target.closest?e.target.closest('.tt'):null;
+if(tt){showTT(tt);S.mt=tt}
+});
+doc.addEventListener('mouseout',function(e){
+if(touchMode)return;
+var tt=e.target.closest?e.target.closest('.tt'):null;
+if(tt&&!(e.relatedTarget&&tt.contains(e.relatedTarget))){hideTip()}
+});
+doc.addEventListener('focusin',function(e){
+if(touchMode)return;
+var tt=e.target&&e.target.closest?e.target.closest('.tt'):null;
+if(tt){showTT(tt);S.mt=tt}
+});
+doc.addEventListener('focusout',function(e){
+if(touchMode)return;
+var tt=e.target&&e.target.closest?e.target.closest('.tt'):null;
+if(tt){hideTip()}
+});
+doc.addEventListener('scroll',function(){if(GT&&GT.classList.contains('show'))hideTip()},{capture:true});
+win.addEventListener('resize',function(){if(GT&&GT.classList.contains('show'))hideTip()});
+/* ===== Scroll reveal ===== */
+var IO=null;
+function reveal(scope){
+if(!('IntersectionObserver' in win)){$$('.rv',scope).forEach(function(e){e.classList.add('in')});return}
+if(!IO){IO=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');IO.unobserve(en.target)}})},{threshold:.06,rootMargin:'0px 0px -16px 0px'})}
+$$('.rv',scope).forEach(function(e){IO.observe(e)});
+}
+function calcRisk(p){
+var ar=0,me=0,sc=0,yg=0,lc=0,sv=0,st=0,be=0,es=0,co=0;
+for(var i=0;i<p.length;i++){
+var it=p[i],coin=GC(it.s);if(!coin)continue;
+var a=it.a,w=a/100;
+ar+=coin.b*w;
+if(a>80)co+=20;else if(a>60)co+=10;
+if(coin.c==="Meme")me+=a;
+if(coin.m==="Small")sc+=a;
+if(coin.m==="Large")lc+=a;
+if(coin.a==="Low")yg+=a;
+if(coin.c==="Store of Value")sv+=a;
+if(coin.c==="Stablecoin")st+=a;
+if(coin.s==="BTC"||coin.s==="ETH")be+=a;
+if(coin.a==="High"||coin.a==="Very High")es+=a;
+}
+var cnt=p.length;
+var dv=cnt===1?20:cnt===2?15:cnt===3?10:0;
+var mp=me>40?20:me>20?10:0;
+var sp=sc>30?15:0;
+var ap=yg>20?10:0;
+var raw=ar+co+dv+mp+sp+ap;
+var score=Math.min(100,Math.max(0,Math.round(raw)));
+var level=score<=20?"Very Low":score<=40?"Low":score<=60?"Medium":score<=80?"High":"Very High";
+var SE={"Very Low":"Your portfolio carries very low risk with stable, established assets.","Low":"Your portfolio has low risk with a sound structure.","Medium":"Your portfolio has moderate risk with some volatile allocations.","High":"Your portfolio has high risk due to concentration or volatile assets.","Very High":"Your portfolio is highly risky with speculative or concentrated positions.","default":"Unable to assess risk."};
+var SR={"Very Low":"Ваш портфель имеет очень низкий риск благодаря стабильным, устоявшимся активам.","Low":"Ваш портфель имеет низкий риск и устойчивую структуру.","Medium":"Ваш портфель имеет умеренный риск с некоторыми волатильными позициями.","High":"Ваш портфель имеет высокий риск из-за концентрации или волатильных активов.","Very High":"Ваш портфель крайне рискован из-за спекулятивных или сконцентрированных позиций.","default":"Не удалось оценить риск."};
+var su=(lang==='ru'?SR:SE)[level]||(lang==='ru'?SR:SE).default;
+var pos=[],ru=lang==='ru';
+if(be>50)pos.push(ru?'Надёжная основа: '+be+'% в BTC/ETH.':'Strong foundation with '+be+'% in BTC/ETH.');
+else if(be>30)pos.push(ru?'Разумная доля BTC/ETH ('+be+'%).':'Reasonable BTC/ETH exposure ('+be+'%).');
+if(lc>60)pos.push(ru?lc+'% в крупнокапитализационных активах обеспечивает стабильность.':lc+'% in large-cap assets provides stability.');
+if(cnt>=5)pos.push(ru?'Хорошо диверсифицирован: '+cnt+' активов.':'Well diversified across '+cnt+' assets.');
+if(me===0)pos.push(ru?"Нет мем-коинов.":"No meme coin exposure.");
+if(es>50)pos.push(ru?es+'% в устоявшихся проектах.':es+'% in established projects.');
+if(st>10)pos.push(ru?st+'% в стейблкоинах как резерв.':st+'% in stablecoins as reserve.');
+if(pos.length===0)pos.push(ru?"Портфель проанализирован.":"Portfolio has been analyzed.");
+var rsk=[];
+for(var i=0;i<p.length;i++){
+var it=p[i];
+if(it.a>80)rsk.push(ru?'Чрезмерная концентрация: '+it.s+' = '+it.a+'%.':'Extreme concentration: '+it.s+' at '+it.a+'%.');
+else if(it.a>60)rsk.push(ru?'Высокая концентрация: '+it.s+' = '+it.a+'%.':'High concentration: '+it.s+' at '+it.a+'%.');
+}
+if(me>40)rsk.push(ru?me+'% в мем-коинах — крайне спекулятивно.':me+'% in meme coins — highly speculative.');
+else if(me>20)rsk.push(ru?me+'% в мем-коинах — волатильно.':me+'% in meme coins — volatile.');
+if(sc>30)rsk.push(ru?sc+'% в small cap — риск ликвидности.':sc+'% in small-cap assets — liquidity risk.');
+if(yg>20)rsk.push(ru?yg+'% в новых проектах — неопределённость.':yg+'% in new projects — uncertain.');
+if(cnt===1)rsk.push(ru?"Одноактивный портфель.":"Single-asset portfolio.");
+else if(cnt<4)rsk.push(ru?'Только '+cnt+' актива — недостаточная диверсификация.':'Only '+cnt+' assets — insufficient diversification.');
+if(rsk.length===0)rsk.push(ru?"Значительных рисков не обнаружено.":"No significant risks detected.");
+var rc=[];
+if(me>20)rc.push(ru?"Снизьте долю мем-коинов до 10%.":"Reduce meme coin allocation below 10%.");
+if(cnt<4)rc.push(ru?"Добавьте 2-3 устоявшихся актива.":"Add 2-3 established assets for diversification.");
+var mx=p.reduce(function(m,i){return i.a>m.a?i:m},p[0]||{s:'',a:0});
+if(mx&&mx.a>60)rc.push(ru?'Снизьте долю '+mx.s+' ниже 50%.':'Reduce '+mx.s+' below 50%.');
+if(sc>30)rc.push(ru?"Увеличьте долю крупных активов.":"Increase large-cap exposure for stability.");
+if(be<30&&p.length>0)rc.push(ru?"Рассмотрите увеличение доли BTC/ETH.":"Consider increasing BTC/ETH allocation.");
+if(rc.length===0)rc.push(ru?"Структура портфеля хороша.":"Portfolio structure is good.");
+return{score:score,level:level,summary:su,positives:pos,risks:rsk,recs:rc,portfolio:p,breakdown:{ar:Math.round(ar*10)/10,co:co,dv:dv,mp:mp,sp:sp,ap:ap}};
+}
+var S={rows:[],rc:0,od:null,oa:null,lr:null,at:null,mt:null};
+var BL={en:{ar:"Asset Risk",co:"Concentration",dv:"Diversification",mp:"Meme Penalty",sp:"Small Cap Penalty",ap:"Age Penalty"},ru:{ar:"Риск активов",co:"Концентрация",dv:"Диверсификация",mp:"Штраф за мемы",sp:"Штраф за Small Cap",ap:"Штраф за возраст"}};
+var BT={
+ar:{te:"Asset Risk",tr:"Риск активов",de:"Weighted average of base risk scores.",dr:"Взвешенное среднее базовых баллов риска."},
+co:{te:"Concentration",tr:"Концентрация",de:"+10 if any asset >60%, +20 if >80%.",dr:"+10 если актив >60%, +20 если >80%."},
+dv:{te:"Diversification",tr:"Диверсификация",de:"1 = +20, 2 = +15, 3 = +10, 4+ = 0.",dr:"1 = +20, 2 = +15, 3 = +10, 4+ = 0."},
+mp:{te:"Meme Penalty",tr:"Штраф за мемы",de:"+10 if >20%, +20 if >40%.",dr:"+10 если >20%, +20 если >40%."},
+sp:{te:"Small Cap Penalty",tr:"Штраф за Small Cap",de:"+15 if >30%.",dr:"+15 если >30%."},
+ap:{te:"Age Penalty",tr:"Штраф за возраст",de:"+10 if new projects >20%.",dr:"+10 если новые проекты >20%."}
+};
+function uac(){var e=$('#ac');if(e)e.textContent=S.rows.length}
+function cL(c){return t(CAT_I18N[c]||'f_all')||c}
+function vL2(v){var k={"Very Low":"v_vl","Low":"v_lo","Medium":"v_md","High":"v_hi","Very High":"v_vh"}[v];return k?t(k):v}
+function mL(m){return t({Large:"m_lg",Medium:"m_md",Small:"m_sm"}[m])||m}
+function aL(a){var k={"Very High":"a_vh","High":"a_hi","Medium":"a_md","Low":"a_lo"}[a];return k?t(k):a}
+function rL(s){if(s<=10)return t('l_lo');if(s<=18)return t('l_md');if(s<=25)return t('l_hi');return t('l_vh')}
+function lvlTxt(level){
+var lm={"Very Low":lang==='ru'?"Очень низкий":"Very Low","Low":lang==='ru'?"Низкий":"Low","Medium":lang==='ru'?"Средний":"Medium","High":lang==='ru'?"Высокий":"High","Very High":lang==='ru'?"Очень высокий":"Very High"};
+return lm[level]||level;
+}
+function renderCoinList(rid,q,f){
+var fl=CD.slice();
+if(f&&f!=="all"){
+if(["Stablecoin","Meme","DeFi","AI","Layer 2","Smart Contract","Store of Value","RWA","Gaming/Metaverse","Interoperability","Oracle","Exchange Token","Storage","Privacy","Infrastructure"].indexOf(f)>=0)fl=fl.filter(function(c){return c.c===f});
+else fl=fl.filter(function(c){return c.m===f});
+}
+if(q){var ql=q.toLowerCase();fl=fl.filter(function(c){return c.s.toLowerCase().indexOf(ql)>=0||c.n.toLowerCase().indexOf(ql)>=0||c.c.toLowerCase().indexOf(ql)>=0})}
+if(fl.length===0)return '<div style="padding:16px;text-align:center;color:#64748b;font-size:.875rem">'+t('no_res')+'</div>';
+return fl.map(function(c){
+var cc=CAT_CLS[c.c]||'cat-if';var rc=rsColor(c.b);
+return '<div class="dd-item" data-sym="'+c.s+'" data-rid="'+rid+'"><div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:8px"><span style="color:#fff;font-weight:600;font-size:.875rem">'+c.s+'</span><span style="color:#94a3b8;font-size:.75rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+c.n+'</span></div><div style="display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap"><span class="badge '+cc+'">'+cL(c.c)+'</span><span class="badge '+rc.c+'"><span class="risk-dot" style="background:'+rc.d+'"></span>'+c.b+'</span></div></div></div>';
+}).join('');
+}
+function renderPresets(sel){
+return PRESETS.map(function(v){
+var selCls=v===sel?' sel':'';
+return '<div class="alloc-p'+selCls+'" data-v="'+v+'"><span>'+v+'%</span><span class="chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span></div>';
+}).join('');
+}
+function addRow(sym,al){
+al=al||0;
+if(S.rows.length>=MAX){toast(t('t_mx'),'error');return false}
+if(!sym){var nx=nextSym();if(!nx){toast(t('t_mx'),'error');return false}sym=nx}
+else{var exists=false;S.rows.forEach(function(r){if(r.s===sym)exists=true});if(exists){toast(t('t_al'),'error');return false}}
+var id=S.rc++;var row={id:id,s:sym,a:al};
+S.rows.push(row);renderRow(row);updTot();uac();save();return true;
+}
+function renderRow(row){
+var cn=$('#acn');
+var d=ce('div','asset-row slide-in');
+d.style.cssText='position:relative;background:#1e293b;border:1px solid #475569;border-radius:12px;padding:16px';
+d.id='r-'+row.id;
+var coin=GC(row.s);
+var cc=coin?(CAT_CLS[coin.c]||'cat-if'):'cat-if';
+var rc=coin?rsColor(coin.b):{c:'rvb',d:'#8b5cf6'};
+d.innerHTML='<button class="rm-btn" data-rm="'+row.id+'" aria-label="Remove" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div style="display:flex;flex-direction:column;gap:12px"><div class="combo-wrap"><div class="combo-trig" role="button" tabindex="0"><span style="color:#fff;font-weight:500;font-size:.875rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="d-'+row.id+'">'+row.s+'</span><span class="badge '+cc+'" id="b-'+row.id+'" style="flex-shrink:0">'+(coin?cL(coin.c):'')+'</span><span class="badge '+rc.c+'" id="rb-'+row.id+'" style="flex-shrink:0"><span class="risk-dot" style="background:'+rc.d+'"></span>'+(coin?coin.b:0)+'</span><svg style="width:16px;height:16px;color:#94a3b8;margin-left:auto;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="combo-dd" id="dd-'+row.id+'"><input type="text" placeholder="'+t('search_ph')+'" class="dd-search" id="si-'+row.id+'" autocomplete="off"/><div class="dd-list scroll-y" id="li-'+row.id+'">'+renderCoinList(row.id,"","all")+'</div></div></div><div class="alloc-wrap" id="aw-'+row.id+'"><input type="number" id="al-'+row.id+'" class="alloc-input" placeholder="0" min="0" max="100" step="1" value="'+(row.a||'')+'"/><button type="button" class="alloc-trig" id="at-'+row.id+'" aria-label="Select preset"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="alloc-menu scroll-y" id="am-'+row.id+'">'+renderPresets(row.a)+'<div class="alloc-hint">0–100</div></div></div></div>';
+cn.appendChild(d);attachHandlers(row,d);
+}
+function attachHandlers(row,div){
+var tr=$('.combo-trig',div);
+var dd=$('#dd-'+row.id,div);
+var si=$('#si-'+row.id,div);
+var li=$('#li-'+row.id,div);
+var ai=$('#al-'+row.id,div);
+var at=$('#at-'+row.id,div);
+var am=$('#am-'+row.id,div);
+var rm=$('[data-rm="'+row.id+'"]',div);
+var onTrig=function(e){
+if(e){e.stopPropagation();e.preventDefault&&e.preventDefault();}
+closeDD();closeAM();
+var isOpen=dd.classList.contains('open');
+if(!isOpen){
+dd.classList.add('open');
+S.od=row.id;
+setTimeout(function(){si.value='';si.focus();li.innerHTML=renderCoinList(row.id,'','all')},50);
+}else{
+dd.classList.remove('open');
+S.od=null;
+}
+};
+tr.addEventListener('click',onTrig);
+tr.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();onTrig(e)}});
+var sTO;
+si.addEventListener('input',function(){
+clearTimeout(sTO);
+sTO=setTimeout(function(){li.innerHTML=renderCoinList(row.id,si.value.toLowerCase().trim(),'all')},120);
+});
+si.addEventListener('click',function(e){e.stopPropagation()});
+li.addEventListener('click',function(e){
+var it=e.target.closest('[data-sym]');if(!it)return;
+e.stopPropagation();selCoin(row.id,it.dataset.sym);
+});
+ai.addEventListener('input',function(){
+var raw=ai.value;
+if(raw==='')row.a=0;
+else{var v=parseFloat(raw);if(isNaN(v)||v<0)v=0;if(v>100)v=100;row.a=Math.round(v)}
+updAM(row.id,row.a);updTot();save();
+});
+ai.addEventListener('blur',function(){
+var v=parseFloat(ai.value);if(isNaN(v)||v<0)v=0;if(v>100)v=100;v=Math.round(v);
+row.a=v;ai.value=v===0?'':v;updAM(row.id,v);updTot();save();
+});
+ai.addEventListener('click',function(e){e.stopPropagation()});
+at.addEventListener('click',function(e){
+e.stopPropagation();
+if(S.oa!==null&&S.oa!==row.id)closeAM();
+var isOpen=am.classList.contains('open');
+if(isOpen){closeAM(row.id)}
+else{am.classList.add('open');at.classList.add('open');S.oa=row.id;am.innerHTML=renderPresets(row.a)+'<div class="alloc-hint">0–100</div>'}
+});
+am.addEventListener('click',function(e){
+e.stopPropagation();
+var p=e.target.closest('[data-v]');if(!p)return;
+var v=parseInt(p.dataset.v,10);row.a=v;ai.value=v;
+closeAM(row.id);updTot();save();
+});
+rm.addEventListener('click',function(){rmRow(row.id)});
+}
+function updAM(rid,v){
+var m=$('#am-'+rid);if(!m)return;
+$$('[data-v]',m).forEach(function(el){el.classList.toggle('sel',parseInt(el.dataset.v,10)===v)});
+}
+function selCoin(rid,sym){
+var row=null;S.rows.forEach(function(r){if(r.id===rid)row=r});
+if(!row)return;
+var exists=false;S.rows.forEach(function(r){if(r.id!==rid&&r.s===sym)exists=true});
+if(exists){toast(t('t_al'),'error');closeDD(rid);return}
+row.s=sym;var coin=GC(sym);
+var cc=coin?(CAT_CLS[coin.c]||'cat-if'):'cat-if';
+var rc=coin?rsColor(coin.b):{c:'rvb',d:'#8b5cf6'};
+var d=$('#d-'+rid),b=$('#b-'+rid),rb=$('#rb-'+rid);
+if(d)d.textContent=sym;
+if(b){b.textContent=coin?cL(coin.c):'';b.className='badge '+cc}
+if(rb){rb.innerHTML='<span class="risk-dot" style="background:'+rc.d+'"></span>'+(coin?coin.b:0);rb.className='badge '+rc.c}
+closeDD(rid);save();
+}
+function closeDD(id){
+if(id){var d=$('#dd-'+id);if(d)d.classList.remove('open');if(S.od===id)S.od=null}
+else{$$('.combo-dd').forEach(function(d){d.classList.remove('open')});S.od=null}
+}
+function closeAM(id){
+if(id){var m=$('#am-'+id),tr=$('#at-'+id);if(m)m.classList.remove('open');if(tr)tr.classList.remove('open');if(S.oa===id)S.oa=null}
+else{$$('.alloc-menu').forEach(function(m){m.classList.remove('open')});$$('.alloc-trig').forEach(function(tr){tr.classList.remove('open')});S.oa=null}
+}
+function rmRow(id){
+if(S.rows.length<=1){toast(lang==='ru'?'Нельзя удалить последний актив':'Cannot remove last','error');return}
+S.rows=S.rows.filter(function(r){return r.id!==id});
+var el=$('#r-'+id);if(el&&el.parentNode)el.parentNode.removeChild(el);
+if(S.od===id)S.od=null;if(S.oa===id)S.oa=null;
+updTot();uac();save();
+}
+function updTot(){
+var tot=0;S.rows.forEach(function(r){tot+=(r.a||0)});
+var td=$('#td'),te=$('#te'),ab=$('#ana-btn');
+td.textContent=tot+'%';
+var ok=tot===100&&S.rows.length>0;
+td.style.color=ok?'#4ade80':(S.rows.length>0?'#f87171':'#fff');
+te.style.display=(!ok&&S.rows.length>0)?'flex':'none';
+if(ab){
+ab.disabled=!ok;
+ab.style.opacity=ok?'1':'0.5';
+ab.style.cursor=ok?'pointer':'not-allowed';
+ab.style.background=ok?'linear-gradient(90deg,#2563eb,#9333ea)':'#334155';
+}
+}
+function renderTable(p){
+if(!p||p.length===0)return '';
+var rows=p.map(function(it){
+var c=GC(it.s);if(!c)return '';
+var cc=CAT_CLS[c.c]||'cat-if';var rc=rsColor(c.b);
+return '<tr><td class="sym">'+c.s+'</td><td class="nm">'+c.n+'</td><td><span class="badge '+cc+'">'+cL(c.c)+'</span></td><td><span class="pill '+volC(c.v)+'">'+vL2(c.v)+'</span></td><td><span class="pill '+mcC(c.m)+'">'+mL(c.m)+'</span></td><td><span class="pill '+ageC(c.a)+'">'+aL(c.a)+'</span></td><td><span class="pill '+rc.c+'"><span class="risk-dot" style="background:'+rc.d+'"></span>'+c.b+'</span></td><td class="al">'+it.a+'%</td></tr>';
+}).join('');
+return '<div class="summary-sec"><div class="summary-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span class="t">'+(lang==='ru'?'Активы портфеля':'Portfolio Assets')+'</span><span class="ct">'+p.length+'</span></div><div style="overflow-x:auto;margin:0 -20px;padding:0 20px"><table class="s-table"><thead><tr><th>'+(lang==='ru'?'Символ':'Sym')+'</th><th>'+(lang==='ru'?'Название':'Name')+'</th><th>'+t('cat')+'</th><th>'+t('vol')+'</th><th>'+t('m_cap')+'</th><th>'+t('age')+'</th><th>'+t('b_sc')+'</th><th>%</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+}
+function displayRes(r,skip){
+hideTip();
+S.lr=r;var res=$('#res');if(!res)return;
+res.style.display='flex';res.classList.add('fade-in');
+var g=$('#gauge');if(g)g.style.left='calc('+r.score+'% - 12px)';
+animN($('#rs'),0,r.score,700);
+var le=$('#rl');
+le.textContent=lvlTxt(r.level)+' '+t('r_w');
+var clr={"Very Low":"#4ade80","Low":"#22c55e","Medium":"#facc15","High":"#fb923c","Very High":"#f87171"}[r.level]||"#cbd5e1";
+le.style.color=clr;
+$('#rsum').textContent=r.summary;
+var sw=$('#saw');if(sw&&r.portfolio)sw.innerHTML=renderTable(r.portfolio);
+var lb=BL[lang]||BL.en;
+var items=[{k:'ar',v:r.breakdown.ar,mx:30},{k:'co',v:r.breakdown.co,mx:20},{k:'dv',v:r.breakdown.dv,mx:20},{k:'mp',v:r.breakdown.mp,mx:20},{k:'sp',v:r.breakdown.sp,mx:15},{k:'ap',v:r.breakdown.ap,mx:10}];
+$('#brc').innerHTML=items.map(function(it){
+var pct=Math.min(100,(it.v/it.mx)*100);
+var col=it.v===0?'#22c55e':it.v<=it.mx*0.5?'#eab308':'#ef4444';
+return '<div class="br-row"><div class="bl-wrap" style="margin-bottom:6px"><span style="color:#94a3b8;font-size:.875rem">'+lb[it.k]+'</span><button type="button" class="i-btn" data-tt="'+it.k+'" aria-label="Info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></button></div><div style="display:flex;align-items:center;gap:12px"><div style="flex:1;height:8px;background:#1e293b;border-radius:9999px;overflow:hidden"><div style="height:100%;background:'+col+';border-radius:9999px;transition:width .7s;width:'+pct+'%"></div></div><span style="color:#fff;font-size:.875rem;font-family:monospace;width:40px;text-align:right">'+it.v+'</span></div></div>';
+}).join('');
+$$('.i-btn').forEach(function(btn){
+btn.addEventListener('click',function(e){e.stopPropagation();toggleTip(btn.dataset.tt)});
+});
+var rl=function(items,ic,co){return items.map(function(tx){return '<li style="display:flex;align-items:flex-start;gap:8px;color:#cbd5e1;font-size:.9rem"><svg style="width:16px;height:16px;flex-shrink:0;margin-top:2px;color:'+co+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'+ic+'</svg><span>'+tx+'</span></li>'}).join('')};
+$('#pos').innerHTML=rl(r.positives,'<polyline points="20 6 9 17 4 12"/>','#4ade80');
+$('#ris').innerHTML=rl(r.risks,'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>','#fb923c');
+$('#rec').innerHTML=rl(r.recs,'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>','#facc15');
+if(!skip)res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function toggleTip(id){
+var btn=$('[data-tt="'+id+'"]');if(!btn)return;
+if(S.at===id&&GT&&GT.classList.contains('show')){hideTip();return}
+$$('.i-btn.active').forEach(function(b){b.classList.remove('active')});
+var tp=BT[id];if(!tp)return;
+showGTip(btn,'<div class="g-tip-t">'+(lang==='ru'?tp.tr:tp.te)+'</div><div>'+(lang==='ru'?tp.dr:tp.de)+'</div>');
+btn.classList.add('active');
+S.at=id;
+}
+function animN(el,f,to,d){
+if(!el)return;
+var st=performance.now();
+var step=function(now){
+var p=Math.min((now-st)/d,1);
+var e=1-Math.pow(1-p,3);
+el.textContent=Math.round(f+(to-f)*e);
+if(p<1)requestAnimationFrame(step);
+};
+requestAnimationFrame(step);
+}
+function applyTpl(n){
+var tp=TPLS[n];if(!tp)return;
+if(tp.length>MAX){toast(t('t_mx'),'error');return}
+S.rows=[];$('#acn').innerHTML='';S.rc=0;
+tp.forEach(function(p){var id=S.rc++;var row={id:id,s:p.s,a:p.a};S.rows.push(row);renderRow(row)});
+updTot();uac();save();toast(t('t_tp'),'success');
+}
+function copyRes(){
+if(!S.lr)return;
+var r=S.lr;
+var txt=doc.title+'\n'+(lang==='ru'?'Риск':'Risk')+': '+r.score+'/100 — '+r.level+'\n'+r.summary+'\n';
+if(r.portfolio&&r.portfolio.length>0){txt+='\n— '+(lang==='ru'?'Портфель':'Portfolio')+' —\n';r.portfolio.forEach(function(i){var c=GC(i.s);if(c)txt+='• '+c.s+' ('+c.n+') — '+i.a+'%\n'})}
+txt+='\n— '+(lang==='ru'?'Положительные факторы':'Positive')+' —\n';r.positives.forEach(function(p){txt+='✓ '+p+'\n'});
+txt+='\n— '+(lang==='ru'?'Риски':'Risks')+' —\n';r.risks.forEach(function(r){txt+='⚠ '+r+'\n'});
+txt+='\n— '+(lang==='ru'?'Рекомендации':'Recs')+' —\n';r.recs.forEach(function(r){txt+='→ '+r+'\n'});
+txt+='\n'+location.href;
+var btn=$('#cp-btn');
+var ok=function(){btn.classList.add('copied');btn.querySelector('span').textContent=t('t_cp');setTimeout(function(){btn.classList.remove('copied');btn.querySelector('span').textContent=t('cp_res')},2000)};
+if(navigator.clipboard)navigator.clipboard.writeText(txt).then(ok).catch(function(){fcp(txt,ok)});else fcp(txt,ok);
+}
+function fcp(txt,cb){var ta=ce('textarea');ta.value=txt;ta.style.cssText='position:fixed;opacity:0;left:-9999px';doc.body.appendChild(ta);ta.select();try{doc.execCommand('copy');if(cb)cb()}catch(e){}if(ta.parentNode)ta.parentNode.removeChild(ta)}
+function shareText(){
+var r=S.lr;
+if(!r)return doc.title+'\n'+location.href;
+return (lang==='ru'?'Риск моего крипто-портфеля: ':'My crypto portfolio risk score: ')+r.score+'/100 — '+lvlTxt(r.level)+'\n'+r.summary+'\n'+location.href;
+}
+function ssFallback(canvas){
+var fn='crypto-risk-'+(S.lr?S.lr.score:0)+'-'+Date.now()+'.png';
+var du=canvas.toDataURL('image/png');
+var sm=$('#ssm'),sc=$('#ssmc');
+sc.innerHTML='<button class="close-btn" id="ssmx" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>'
++'<h3 style="font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:8px">'+t('sh_dl_t')+'</h3>'
++'<p style="color:#94a3b8;font-size:.8rem;line-height:1.5;margin-bottom:14px">'+t('sh_fb')+'</p>'
++'<img src="'+du+'" alt="Screenshot" style="margin-bottom:16px"/>'
++'<div style="display:flex;flex-direction:column;gap:8px">'
++'<button id="sscp" style="padding:12px 16px;background:linear-gradient(90deg,#2563eb,#9333ea);color:#fff;font-weight:600;border-radius:8px;border:none;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>'+t('sh_ci')+'</span></button>'
++'<button id="ssdl" style="padding:12px 16px;background:#1e293b;color:#cbd5e1;font-weight:600;border-radius:8px;border:1px solid #475569;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>'+t('sh_dl')+'</span></button>'
++'<button id="sscl" style="padding:12px 16px;background:transparent;color:#64748b;font-weight:600;border-radius:8px;border:none;min-height:40px;cursor:pointer">'+t('cl')+'</button>'
++'</div>';
+sm.classList.add('active');
+$('#ssdl').onclick=function(){var a=ce('a');a.href=du;a.download=fn;a.click()};
+$('#sscp').onclick=function(){
+canvas.toBlob(function(blob){
+if(blob&&win.ClipboardItem&&navigator.clipboard&&navigator.clipboard.write){
+navigator.clipboard.write([new ClipboardItem({'image/png':blob})]).then(function(){toast(t('sh_cok'),'success')},function(){toast(t('sh_cer'),'error')});
+}else{toast(t('sh_cer'),'error')}
+},'image/png');
+};
+$('#sscl').onclick=function(){sm.classList.remove('active')};
+$('#ssmx').onclick=function(){sm.classList.remove('active')};
+sm.onclick=function(e){if(e.target===sm)sm.classList.remove('active')};
+}
+function handleSS(){
+if(typeof html2canvas==='undefined'){toast(t('t_ss'),'error');return}
+var tgt=$('#ss-tgt');if(!tgt)return;
+var lo=ce('div');lo.className='modal active';
+lo.innerHTML='<div class="modal-c" style="text-align:center"><div class="spinner" style="margin:0 auto 16px"></div><div style="color:#fff;font-weight:500">...</div></div>';
+doc.body.appendChild(lo);
+var rmLo=function(){if(lo.parentNode)lo.parentNode.removeChild(lo)};
+setTimeout(function(){
+html2canvas(tgt,{backgroundColor:'#0f172a',scale:win.devicePixelRatio>1?2:1.5,useCORS:true,logging:false}).then(function(canvas){
+rmLo();
+var txt=shareText();
+var fn='crypto-risk-'+(S.lr?S.lr.score:0)+'.png';
+var onAbort=function(err){if(err&&err.name==='AbortError')return;ssFallback(canvas)};
+var tryShare=function(blob){
+var done=false;
+try{
+if(blob&&win.File&&navigator.canShare&&navigator.share){
+var file=new File([blob],fn,{type:'image/png'});
+if(navigator.canShare({files:[file]})){
+done=true;
+navigator.share({files:[file],title:doc.title,text:txt}).then(function(){toast(t('sh_ok'),'success')}).catch(onAbort);
+}
+}
+if(!done&&navigator.share){
+done=true;
+navigator.share({title:doc.title,text:txt}).then(function(){toast(t('sh_ok'),'success')}).catch(onAbort);
+}
+}catch(e){done=false}
+if(!done)ssFallback(canvas);
+};
+if(canvas.toBlob){canvas.toBlob(function(b){tryShare(b)},'image/png')}
+else{tryShare(null)}
+}).catch(function(){rmLo();toast(t('t_ss'),'error')});
+},200);
+}
+function initDisc(){
+var btn=$('#rm-btn');
+if(btn)btn.addEventListener('click',function(){switchTab('disc')});
+}
+function initSB(){
+var mb=$('#mb'),sb=$('#sb'),ov=$('#sbo'),xb=$('#sbx'),items=$$('.sb-item');
+var open=function(){sb.classList.add('open');ov.classList.add('open');doc.body.style.overflow='hidden'};
+var close=function(){sb.classList.remove('open');ov.classList.remove('open');doc.body.style.overflow=''};
+mb.addEventListener('click',open);
+xb.addEventListener('click',close);
+ov.addEventListener('click',close);
+items.forEach(function(i){i.addEventListener('click',function(){switchTab(i.dataset.tab);close()})});
+}
+var AAS={s:'',c:'all',m:'all',all:false,fo:false};
+function renderMG(){
+var el=$('#mg-sec');if(!el)return;
+var IC={
+sym:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',
+nm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>',
+cat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
+bs:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+rl:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+vol:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
+mc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+age:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'
+};
+var chip=function(cls,txt,dot){
+return '<span class="mg-chip '+cls+'">'+(dot?'<span class="risk-dot" style="background:'+dot+'"></span>':'')+txt+'</span>';
+};
+var scoreChips=[['rvb','2–10','l_lo','#22c55e'],['rlo','11–18','l_md','#eab308'],['rme','19–25','l_hi','#f97316'],['rhi','26–35','l_vh','#ef4444']].map(function(x){return chip(x[0],x[1]+' · '+t(x[2]),x[3])}).join('');
+var volChips=[['vol-lo','v_vl'],['vol-lo','v_lo'],['vol-md','v_md'],['vol-hi','v_hi'],['vol-vh','v_vh']].map(function(x){return chip(x[0],t(x[1]))}).join('');
+var mcChips=[['mc-lg','m_lg'],['mc-md','m_md'],['mc-sm','m_sm']].map(function(x){return chip(x[0],t(x[1]))}).join('');
+var ageChips=[['ag-vh','a_vh'],['ag-hi','a_hi'],['ag-md','a_md'],['ag-lo','a_lo']].map(function(x){return chip(x[0],t(x[1]))}).join('');
+var catChips=[['cat-sov','Store of Value'],['cat-sm','Smart Contract'],['cat-de','DeFi'],['cat-me','Meme'],['cat-l2','Layer 2'],['cat-ai','AI'],['cat-sb','Stablecoin']].map(function(x){return chip(x[0],cL(x[1]))}).join('');
+var card=function(ic,nm,ds,scl){
+return '<div class="mg-card"><div class="mg-name">'+ic+'<span>'+nm+'</span></div><div class="mg-desc">'+ds+'</div>'+(scl?'<div class="mg-scale">'+scl+'</div>':'')+'</div>';
+};
+el.innerHTML='<div class="mg-head"><div class="mg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><h3 class="mg-t">'+t('mg_t')+'</h3><p class="mg-d">'+t('mg_d')+'</p></div></div><div class="mg-grid">'
++card(IC.sym,t('mg_sym'),t('t_sym'))
++card(IC.nm,t('mg_nm'),t('t_nm'))
++card(IC.cat,t('cat'),t('t_cat'),catChips)
++card(IC.bs,t('b_sc'),t('t_bs'),scoreChips)
++card(IC.rl,t('r_lev'),t('t_rl'),scoreChips)
++card(IC.vol,t('vol'),t('t_vol'),volChips)
++card(IC.mc,t('m_cap'),t('t_mc'),mcChips)
++card(IC.age,t('age'),t('t_age'),ageChips)
++'</div>';
+}
+/* ===== Knowledge Base page ===== */
+function renderKB(){
+var el=$('#kb-page');if(!el)return;
+var FIC={
+layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+zap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+save:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>',
+target:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+bars:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="20" x2="6" y2="16"/><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/></svg>',
+bulb:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.9V17h8v-2.1A7 7 0 0 0 12 2z"/></svg>',
+grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
+share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>',
+db:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',
+lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>'
+};
+var steps=[t('kb_s1'),t('kb_s2'),t('kb_s3'),t('kb_s4'),t('kb_s5')];
+var feats=[['layers','kb_f1'],['zap','kb_f2'],['save','kb_f3'],['target','kb_f4'],['bars','kb_f5'],['bulb','kb_f6'],['grid','kb_f7'],['share','kb_f8'],['db','kb_f9'],['lock','kb_f10'],['globe','kb_f11'],['phone','kb_f12']];
+var lvls=[
+['0–20','#22c55e','lv_vl','kb_lv_vl_d','kb_lv_vl_ex'],
+['21–40','#a3e635','lv_l','kb_lv_l_d','kb_lv_l_ex'],
+['41–60','#facc15','lv_m','kb_lv_m_d','kb_lv_m_ex'],
+['61–80','#fb923c','lv_h','kb_lv_h_d','kb_lv_h_ex'],
+['81–100','#f87171','lv_vh','kb_lv_vh_d','kb_lv_vh_ex']
+];
+var tips=['kb_t1','kb_t2','kb_t3','kb_t4','kb_t5','kb_t6','kb_t7','kb_t8'];
+var faqs=[['kb_q1','kb_a1'],['kb_q2','kb_a2'],['kb_q3','kb_a3'],['kb_q4','kb_a4'],['kb_q5','kb_a5'],['kb_q6','kb_a6'],['kb_q7','kb_a7'],['kb_q8','kb_a8']];
+var h='';
+h+='<div class="pg-hd rv"><div class="pg-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div><h2 class="pg-t">'+t('kb_t')+'</h2><p class="pg-d">'+t('kb_intro')+'</p></div></div>';
+h+='<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:22px">';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">01</span><h3>'+t('kb_gs')+'</h3></div><p class="sec-sub rv">'+t('kb_gd')+'</p><div class="k-tl">';
+steps.forEach(function(s,i){h+='<div class="k-step rv"><div class="k-num">'+('0'+(i+1))+'</div><div class="k-tx">'+s+'</div></div>'});
+h+='</div></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">02</span><h3>'+t('kb_ft')+'</h3></div><p class="sec-sub rv">'+t('kb_fd')+'</p><div class="feat-grid">';
+feats.forEach(function(f){h+='<div class="feat rv"><div class="fi">'+FIC[f[0]]+'</div><div><div class="ftt">'+t(f[1]+'_t')+'</div><div class="fdd">'+t(f[1]+'_d')+'</div></div></div>'});
+h+='</div></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">03</span><h3>'+t('kb_rs')+'</h3></div><p class="sec-sub rv">'+t('kb_rd')+'</p>';
+lvls.forEach(function(l){h+='<div class="lvl-row rv" style="--lc:'+l[1]+'"><div class="lvl-num">'+l[0]+'</div><div style="min-width:0"><div class="lvl-nm">'+t(l[2])+'</div><div class="lvl-ds">'+t(l[3])+'</div><div class="lvl-ex"><b>'+t('kb_lv_ex')+'</b><code>'+t(l[4])+'</code></div></div></div>'});
+h+='</section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">04</span><h3>'+t('kb_tp')+'</h3></div><div class="tips-grid">';
+tips.forEach(function(k){h+='<div class="tip-c rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>'+t(k)+'</span></div>'});
+h+='</div></section>';
+h+='<section class="kb-sec" style="margin-bottom:0"><div class="sec-h rv"><span class="sn">05</span><h3>'+t('kb_faq')+'</h3></div>';
+faqs.forEach(function(f){h+='<div class="faq-item rv"><button type="button" class="faq-q"><span>'+t(f[0])+'</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><div><p>'+t(f[1])+'</p></div></div></div>'});
+h+='</section></div>';
+el.innerHTML=h;
+$$('.faq-q',el).forEach(function(q){q.addEventListener('click',function(){q.closest('.faq-item').classList.toggle('open')})});
+reveal(el);
+}
+/* ===== Methodology page ===== */
+function renderMeth(){
+var el=$('#meth-page');if(!el)return;
+var FC={ar:'#60a5fa',co:'#f59e0b',dv:'#a78bfa',mp:'#f472b6',sp:'#fb923c',ap:'#34d399'};
+var BLx=BL[lang]||BL.en;
+var factors=[
+['ar','mt_ar_w','mt_ar_d','mt_ar_r',100],
+['co','mt_co_w','mt_co_d','mt_co_r',66],
+['dv','mt_dv_w','mt_dv_d','mt_dv_r',66],
+['mp','mt_mp_w','mt_mp_d','mt_mp_r',66],
+['sp','mt_sp_w','mt_sp_d','mt_sp_r',50],
+['ap','mt_ap_w','mt_ap_d','mt_ap_r',33]
+];
+var bands=[['0–20','lv_vl','#22c55e','mt_b1'],['21–40','lv_l','#a3e635','mt_b2'],['41–60','lv_m','#facc15','mt_b3'],['61–80','lv_h','#fb923c','mt_b4'],['81–100','lv_vh','#f87171','mt_b5']];
+var h='';
+h+='<div class="pg-hd rv"><div class="pg-ico" style="color:#c084fc;background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.35)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><h2 class="pg-t">'+t('mt_t')+'</h2><p class="pg-d">'+t('mt_intro')+'</p></div></div>';
+h+='<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:22px">';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">01</span><h3>'+t('mt_ph_t')+'</h3></div><div class="prin">';
+['mt_ph_1','mt_ph_2','mt_ph_3','mt_ph_4'].forEach(function(k,i){h+='<div class="prin-row rv"><span class="pn">P'+(i+1)+'</span><span>'+t(k)+'</span></div>'});
+h+='</div></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">02</span><h3>'+t('mt_f')+'</h3></div><p class="sec-sub rv">'+t('mt_f_d')+'</p>';
+h+='<div class="m-formula rv"><div class="m-fx"><span class="m-op">Score =</span><span class="m-tok" style="background:rgba(96,165,250,.15);color:#93c5fd">AR</span><span class="m-op">+</span><span class="m-tok" style="background:rgba(245,158,11,.15);color:#fcd34d">CO</span><span class="m-op">+</span><span class="m-tok" style="background:rgba(167,139,250,.15);color:#c4b5fd">DV</span><span class="m-op">+</span><span class="m-tok" style="background:rgba(244,114,182,.15);color:#f9a8d4">MP</span><span class="m-op">+</span><span class="m-tok" style="background:rgba(251,146,60,.15);color:#fdba74">SP</span><span class="m-op">+</span><span class="m-tok" style="background:rgba(52,211,153,.15);color:#6ee7b7">AP</span><span class="m-op">→ clamp(0…100)</span></div>';
+h+='<div class="m-leg">';
+[['AR','mt_ar_n','#60a5fa'],['CO','mt_co_n','#f59e0b'],['DV','mt_dv_n','#a78bfa'],['MP','mt_mp_n','#f472b6'],['SP','mt_sp_n','#fb923c'],['AP','mt_ap_n','#34d399']].forEach(function(x){h+='<span><i style="background:'+x[2]+'"></i>'+x[0]+' — '+t(x[1])+'</span>'});
+h+='</div></div></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">03</span><h3>'+t('mt_fc')+'</h3></div>';
+factors.forEach(function(f){
+h+='<div class="fac-row rv" style="--fc:'+FC[f[0]]+'"><div class="fac-hd"><div class="fac-nm"><i></i>'+BLx[f[0]]+'</div><div class="fac-wg">'+t(f[1])+'</div></div><div class="fac-ds">'+t(f[2])+'</div><div class="fac-rl">'+t(f[3])+'</div><div class="fac-bar"><i style="width:'+f[4]+'%"></i></div></div>';
+});
+h+='</section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">04</span><h3>'+t('mt_bs_t')+'</h3></div><p class="sec-sub rv">'+t('mt_bs_d')+'</p>';
+h+='<div style="overflow-x:auto" class="rv"><table class="m-table"><thead><tr><th>'+t('mt_bs_c1')+'</th><th>'+t('mt_bs_c2')+'</th></tr></thead><tbody>';
+h+='<tr><td><span class="tk">'+t('mt_bs_vol')+'</span><div style="font-size:.68rem;color:var(--t3);margin-top:3px">'+t('mt_bs_vol_d')+'</div></td><td><span class="pt">'+t('v_vl')+' → 1</span><span class="pt">'+t('v_lo')+' → 3</span><span class="pt">'+t('v_md')+' → 6</span><span class="pt">'+t('v_hi')+' → 10</span><span class="pt">'+t('v_vh')+' → 14</span></td></tr>';
+h+='<tr><td><span class="tk">'+t('mt_bs_mc')+'</span><div style="font-size:.68rem;color:var(--t3);margin-top:3px">'+t('mt_bs_mc_d')+'</div></td><td><span class="pt">'+t('m_lg')+' → 2</span><span class="pt">'+t('m_md')+' → 5</span><span class="pt">'+t('m_sm')+' → 9</span></td></tr>';
+h+='<tr><td><span class="tk">'+t('mt_bs_age')+'</span><div style="font-size:.68rem;color:var(--t3);margin-top:3px">'+t('mt_bs_age_d')+'</div></td><td><span class="pt">'+t('a_vh')+' → 1</span><span class="pt">'+t('a_hi')+' → 3</span><span class="pt">'+t('a_md')+' → 6</span><span class="pt">'+t('a_lo')+' → 10</span></td></tr>';
+h+='<tr><td><span class="tk">'+t('mt_bs_cat')+'</span><div style="font-size:.68rem;color:var(--t3);margin-top:3px">'+t('mt_bs_cat_d')+'</div></td><td><span class="pt">'+t('c_sb')+' → 0</span><span class="pt">'+t('c_soV')+' / '+t('c_pa')+' → 2</span><span class="pt">'+t('c_sm')+' / '+t('c_or')+' → 4</span><span class="pt">'+t('c_de')+' / '+t('c_rw')+' → 5</span><span class="pt">'+t('c_ga')+' / '+t('c_ai')+' → 6</span><span class="pt">'+t('c_me')+' → 9</span></td></tr>';
+h+='</tbody></table></div>';
+h+='<p class="m-note rv" style="margin-top:12px"><strong style="color:var(--t1)">'+t('mt_bs_map')+'</strong> <span class="pt" style="background:rgba(34,197,94,.15);color:#86efac">2–10 · '+t('l_lo')+'</span><span class="pt" style="background:rgba(234,179,8,.15);color:#fde047">11–18 · '+t('l_md')+'</span><span class="pt" style="background:rgba(249,115,22,.15);color:#fdba74">19–25 · '+t('l_hi')+'</span><span class="pt" style="background:rgba(239,68,68,.15);color:#fca5a5">26–35 · '+t('l_vh')+'</span></p>';
+h+='</section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">05</span><h3>'+t('mt_ag_t')+'</h3></div><p class="sec-sub rv">'+t('mt_ag_d')+'</p><div class="m-formula rv"><div class="m-fx" style="font-size:.72rem"><span class="m-op">AR =</span><span style="color:#93c5fd">Σ ( base<sub>i</sub> × share<sub>i</sub> )</span><span class="m-op" style="margin:0 4px">→</span><span style="color:#e2e8f0">Score = clamp( AR + CO + DV + MP + SP + AP, 0, 100 )</span></div></div></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">06</span><h3>'+t('mt_ex_t')+'</h3></div><p class="sec-sub rv">'+t('mt_ex_d')+'</p>';
+['mt_ex_s1','mt_ex_s2','mt_ex_s3','mt_ex_s4','mt_ex_s5','mt_ex_s6'].forEach(function(k,i){h+='<div class="ex-step rv"><span class="ex-n">S'+(i+1)+'</span><span>'+t(k)+'</span></div>'});
+h+='<div class="ex-res rv"><div class="ex-score">42</div><div><div class="ex-lv">'+t('mt_ex_ver')+'</div><div style="font-size:.7rem;color:var(--t3)">/ 100</div></div></div>';
+h+='<p class="ex-take rv">'+t('mt_ex_take')+'</p></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">07</span><h3>'+t('mt_in_t')+'</h3></div><p class="sec-sub rv">'+t('mt_in_d')+'</p><div style="overflow-x:auto" class="rv"><table class="m-table"><thead><tr><th>0–100</th><th>'+t('r_lev')+'</th><th>'+t('mt_in_c')+'</th></tr></thead><tbody>';
+bands.forEach(function(b){h+='<tr><td class="tk" style="color:'+b[2]+'">'+b[0]+'</td><td style="color:var(--t1);font-weight:600">'+t(b[1])+'</td><td>'+t(b[3])+'</td></tr>'});
+h+='</tbody></table></div></section>';
+h+='<section class="kb-sec"><div class="sec-h rv"><span class="sn">08</span><h3>'+t('mt_lm_t')+'</h3></div><p class="sec-sub rv">'+t('mt_lm_d')+'</p><ul class="lim rv">';
+['mt_lm_1','mt_lm_2','mt_lm_3','mt_lm_4','mt_lm_5'].forEach(function(k){h+='<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg><span>'+t(k)+'</span></li>'});
+h+='</ul></section>';
+h+='<section class="kb-sec" style="margin-bottom:0"><div class="sec-h rv"><span class="sn">09</span><h3>'+t('mt_dp_t')+'</h3></div><p class="m-note rv" style="margin:0">'+t('mt_dp_d')+'</p></section>';
+h+='</div>';
+el.innerHTML=h;
+reveal(el);
+}
+/* ===== Disclaimer page ===== */
+function renderDisc(){
+var el=$('#disc-page');if(!el)return;
+var h='';
+h+='<div class="ds-banner rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><p>'+t('ds_warn')+'</p></div>';
+h+='<div style="background:#0f172a;border:1px solid #334155;border-radius:16px;padding:22px">';
+h+='<div class="pg-hd rv" style="margin-bottom:18px"><div class="pg-ico" style="color:#fbbf24;background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.35)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><h2 class="pg-t">'+t('ds_t')+'</h2><span class="ds-meta"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'+t('ds_upd')+'</span></div></div>';
+['ds_1','ds_2','ds_3','ds_4','ds_5','ds_6','ds_7','ds_8','ds_9'].forEach(function(k,i){
+h+='<div class="ds-clause rv"><div class="ds-idx">'+(i+1)+'</div><div style="min-width:0"><h3 class="ds-ct">'+t(k+'_t')+'</h3><p class="ds-cd">'+t(k+'_d')+'</p></div></div>';
+});
+h+='<div class="ds-acc rv">'+t('ds_acc')+'</div>';
+h+='<div class="ds-cta rv"><button type="button" class="c-btn" onclick="switchTab(\'calc\')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span>'+t('ds_back')+'</span></button><button type="button" class="c-btn" onclick="openCM()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>'+t('ds_ask')+'</span></button></div>';
+h+='</div>';
+el.innerHTML=h;
+reveal(el);
+}
+function renderAll(){
+hideTip();
+renderMG();
+var cn=$('#alist'),st=$('#astats'),fc=$('#fcat'),fm=$('#fmc'),sb=$('#sa-btn'),fp=$('#fp'),ft=$('#ftb'),fcs=$('#fcc');
+if(!cn||!st)return;
+if(AAS.fo){fp.classList.add('open');ft.classList.add('active');ft.setAttribute('aria-expanded','true')}
+else{fp.classList.remove('open');ft.classList.remove('active');ft.setAttribute('aria-expanded','false')}
+var ac=0;if(AAS.c!=='all')ac++;if(AAS.m!=='all')ac++;
+if(fcs)fcs.textContent=ac;
+var avg=(CD.reduce(function(s,c){return s+c.b},0)/CD.length).toFixed(1);
+var lo=CD.filter(function(c){return c.b<=10}).length;
+var hi=CD.filter(function(c){return c.b>=25}).length;
+var me=CD.filter(function(c){return c.c==='Meme'}).length;
+st.innerHTML='<div class="st-i"><span class="st-l">'+t('st_tot')+'</span><span class="st-v">'+CD.length+'</span><span class="st-s">TOP-100</span></div><div class="st-i"><span class="st-l">'+t('st_avg')+'</span><span class="st-v">'+avg+'</span><span class="st-s">/ 35</span></div><div class="st-i"><span class="st-l">'+t('st_low')+'</span><span class="st-v" style="color:#4ade80">'+lo+'</span><span class="st-s">≤ 10</span></div><div class="st-i"><span class="st-l">'+t('st_hi')+'</span><span class="st-v" style="color:#f87171">'+hi+'</span><span class="st-s">≥ 25</span></div><div class="st-i"><span class="st-l">'+t('st_meme')+'</span><span class="st-v" style="color:#f472b6">'+me+'</span><span class="st-s">'+t('c_me')+'</span></div>';
+var cats=[];var seen={};CD.forEach(function(c){if(!seen[c.c]){seen[c.c]=1;cats.push(c.c)}});
+fc.innerHTML='<span style="font-size:.75rem;color:#64748b;font-weight:600;padding:8px 0">'+t('f_cat')+':</span><button class="f-chip'+(AAS.c==='all'?' active':'')+'" data-ac="all">'+t('f_all')+'</button>'+cats.map(function(c){return '<button class="f-chip'+(AAS.c===c?' active':'')+'" data-ac="'+c+'">'+cL(c)+'</button>'}).join('');
+fm.innerHTML='<span style="font-size:.75rem;color:#64748b;font-weight:600;padding:8px 0">'+t('f_mc')+':</span><button class="f-chip'+(AAS.m==='all'?' active':'')+'" data-am="all">'+t('f_all')+'</button><button class="f-chip'+(AAS.m==='Large'?' active':'')+'" data-am="Large">'+t('m_lg')+'</button><button class="f-chip'+(AAS.m==='Medium'?' active':'')+'" data-am="Medium">'+t('m_md')+'</button><button class="f-chip'+(AAS.m==='Small'?' active':'')+'" data-am="Small">'+t('m_sm')+'</button>';
+$$('[data-ac]',fc).forEach(function(b){b.addEventListener('click',function(){AAS.c=b.dataset.ac;renderAll()})});
+$$('[data-am]',fm).forEach(function(b){b.addEventListener('click',function(){AAS.m=b.dataset.am;renderAll()})});
+var fl=CD.slice();
+if(AAS.c!=='all')fl=fl.filter(function(c){return c.c===AAS.c});
+if(AAS.m!=='all')fl=fl.filter(function(c){return c.m===AAS.m});
+if(AAS.s){var q=AAS.s.toLowerCase();fl=fl.filter(function(c){return c.s.toLowerCase().indexOf(q)>=0||c.n.toLowerCase().indexOf(q)>=0||c.c.toLowerCase().indexOf(q)>=0})}
+if(fl.length===0){cn.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>'+t('no_res')+'</p></div>';if(sb)sb.style.display='none';return}
+var show=AAS.all?fl:fl.slice(0,PER);
+var hm=fl.length>PER;
+cn.innerHTML=show.map(function(c){
+var cc=CAT_CLS[c.c]||'cat-if';
+var rc=rsColor(c.b);
+var txtClr=rc.c==='rvb'?'#4ade80':rc.c==='rlo'?'#facc15':rc.c==='rme'?'#fb923c':'#f87171';
+return '<div class="a-card" role="listitem"><div class="a-head"><div style="display:flex;align-items:center;gap:12px"><div style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;background:#1e293b;color:#94a3b8;font-weight:700;font-size:.875rem;flex-shrink:0">#'+c.r+'</div><div><div class="a-sym">'+c.s+'</div><div class="a-nm">'+c.n+'</div></div></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span class="badge '+rc.c+'" style="font-size:.75rem;padding:4px 10px"><span class="risk-dot" style="background:'+rc.d+'"></span>'+c.b+'</span><span class="badge '+cc+'" style="font-size:.72rem;padding:3px 8px">'+cL(c.c)+'</span></div></div><div class="a-metrics"><div class="m"><span class="m-l">'+t('r_lev')+'</span><span class="m-v" style="color:'+txtClr+'">'+rL(c.b)+'</span></div><div class="m"><span class="m-l">'+t('vol')+'</span><span class="m-v"><span class="pill '+volC(c.v)+'">'+vL2(c.v)+'</span></span></div><div class="m"><span class="m-l">'+t('m_cap')+'</span><span class="m-v"><span class="pill '+mcC(c.m)+'">'+mL(c.m)+'</span></span></div><div class="m"><span class="m-l">'+t('age')+'</span><span class="m-v"><span class="pill '+ageC(c.a)+'">'+aL(c.a)+'</span></span></div><div class="m"><span class="m-l">'+t('b_sc')+'</span><span class="m-v">'+c.b+' / 35</span></div></div></div>';
+}).join('');
+if(sb){
+if(!hm||AAS.s||AAS.c!=='all'||AAS.m!=='all'){sb.style.display='none'}
+else{
+sb.style.display='flex';
+if(AAS.all){
+sb.classList.add('collapsed');
+sb.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg><span>'+t('sh_less')+'</span>';
+}else{
+sb.classList.remove('collapsed');
+sb.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span>'+t('sh_all')+' ('+(fl.length-PER)+' '+(lang==='ru'?'ещё':'more')+')</span>';
+}
+}
+}
+}
+function buildCF(tid){
+var el=$('#'+tid);if(!el)return;
+var so=[{v:'question',l:t('s_q')},{v:'bug',l:t('s_bug')},{v:'feedback',l:t('s_fb')},{v:'partnership',l:t('s_pt')},{v:'other',l:t('s_ot')}];
+el.innerHTML='<form class="cf" id="cf-'+tid+'" novalidate><div class="cf-f"><label>'+t('f_name')+' <span class="req">*</span></label><input type="text" name="n" required placeholder="'+t('f_name_ph')+'" maxlength="60"></div><div class="cf-f"><label>'+t('f_ct')+' <span class="req">*</span></label><input type="text" name="c" required placeholder="'+t('f_ct_ph')+'" maxlength="100"></div><div class="cf-f"><label>'+t('f_sub')+' <span class="req">*</span></label><select name="s" required><option value="">'+t('f_sub_ph')+'</option>'+so.map(function(o){return '<option value="'+o.v+'">'+o.l+'</option>'}).join('')+'</select></div><div class="cf-f"><label>'+t('f_msg')+' <span class="req">*</span></label><textarea name="m" required minlength="10" maxlength="2000" placeholder="'+t('f_msg_ph')+'"></textarea></div><button type="submit" class="cf-sub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><span>'+t('send')+'</span></button></form>';
+el.querySelector('form').addEventListener('submit',function(e){e.preventDefault();subCF(el.querySelector('form'))});
+}
+function subCF(form){
+var fd=new FormData(form);
+var n=(fd.get('n')||'').toString().trim();
+var c=(fd.get('c')||'').toString().trim();
+var s=(fd.get('s')||'').toString().trim();
+var m=(fd.get('m')||'').toString().trim();
+if(!n||!c||!s||!m){toast(t('f_req'),'error');return}
+if(m.length<10){toast(t('f_min'),'error');return}
+var sm={question:t('s_q'),bug:t('s_bug'),feedback:t('s_fb'),partnership:t('s_pt'),other:t('s_ot')};
+var sl=sm[s]||s;
+var fm='📩 Crypto Portfolio Risk Analyzer — '+(lang==='ru'?'Новое сообщение':'New Message')+'\n\n👤 '+(lang==='ru'?'Имя':'Name')+': '+n+'\n📞 '+(lang==='ru'?'Контакт':'Contact')+': '+c+'\n🏷️ '+(lang==='ru'?'Тема':'Subject')+': '+sl+'\n\n💬 '+(lang==='ru'?'Сообщение':'Message')+':\n'+m+'\n\n🔗 '+location.href+'\n📅 '+new Date().toISOString();
+$('#mp').textContent=fm;
+$('#cm').classList.remove('active');
+$('#csm').classList.add('active');
+$('#mcb').onclick=function(){
+if(navigator.clipboard)navigator.clipboard.writeText(fm).then(function(){toast(t('t_mc'),'success')}).catch(function(){fcp(fm,function(){toast(t('t_mc'),'success')})});
+else fcp(fm,function(){toast(t('t_mc'),'success')});
+};
+$('#mtb').onclick=function(){win.open('https://t.me/share/url?url='+encodeURIComponent('CryptoRiskAnalyzer')+'&text='+encodeURIComponent(fm),'_blank','noopener')};
+form.reset();
+}
+function openCM(){$('#cm').classList.add('active');buildCF('cfm')}
+function closeCM(){$('#cm').classList.remove('active')}
+win.openCM=openCM;
+doc.addEventListener('click',function(e){
+if(!e.target.closest('.combo-wrap'))closeDD();
+if(!e.target.closest('.alloc-wrap'))closeAM();
+var tEl=e.target.closest?e.target.closest('.tt'):null;
+if(tEl){
+if(touchMode){
+if(S.mt===tEl&&GT&&GT.classList.contains('show')){hideTip()}
+else{showTT(tEl);S.mt=tEl}
+}else{
+showTT(tEl);S.mt=tEl;
+}
+return;
+}
+if(!e.target.closest('.i-btn')){hideTip()}
+var tpl=e.target.closest('[data-tpl]');if(tpl)applyTpl(tpl.dataset.tpl);
+});
+doc.addEventListener('keydown',function(e){
+if(e.key==='Escape'){closeDD();closeAM();hideTip();$$('.modal.active').forEach(function(m){m.classList.remove('active')})}
+if(e.ctrlKey&&e.key==='s'&&!e.shiftKey){e.preventDefault();save();toast(t('t_sv'),'success')}
+if(e.ctrlKey&&e.key==='l'){e.preventDefault();var s=load();if(s){S.rows=[];$('#acn').innerHTML='';S.rc=0;s.forEach(function(p){var id=S.rc++;var row={id:id,s:p.s,a:p.a};S.rows.push(row);renderRow(row)});updTot();uac();toast(t('t_ld'),'success')}}
+});
+function initApp(){
+var si=$('#asi');
+if(si)si.addEventListener('input',debounce(function(){AAS.s=si.value.trim();AAS.all=true;renderAll()},200));
+var ft=$('#ftb');
+if(ft)ft.addEventListener('click',function(){AAS.fo=!AAS.fo;renderAll()});
+var sa=$('#sa-btn');
+if(sa)sa.addEventListener('click',function(){AAS.all=!AAS.all;renderAll();if(!AAS.all)$('#alist').scrollIntoView({behavior:'smooth',block:'start'})});
+$$('.lang-btn').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang)})});
+var ct=$('#ctop');if(ct)ct.addEventListener('click',openCM);
+var cx=$('#cmx');if(cx)cx.addEventListener('click',closeCM);
+$('#cm').addEventListener('click',function(e){if(e.target.id==='cm')closeCM()});
+$('#ssm').addEventListener('click',function(e){if(e.target.id==='ssm')$('#ssm').classList.remove('active')});
+$('#csm').addEventListener('click',function(e){if(e.target.id==='csm')$('#csm').classList.remove('active')});
+var saved=load();
+if(saved&&saved.length>0){saved.forEach(function(p){var id=S.rc++;var row={id:id,s:p.s,a:p.a};S.rows.push(row);renderRow(row)})}
+else{var id=S.rc++;var row={id:id,s:"BTC",a:0};S.rows.push(row);renderRow(row)}
+updTot();uac();
+$('#ccb').textContent=CD.length+' '+t('assets_w');
+var ts=$('#tpls'),ttg=$('#tpl-tog');
+ttg.addEventListener('click',function(){ts.classList.toggle('open');ttg.setAttribute('aria-expanded',ts.classList.contains('open'))});
+$('#add-btn').addEventListener('click',function(){addRow()});
+$('#ana-btn').addEventListener('click',function(){displayRes(calcRisk(S.rows.map(function(r){return{s:r.s,a:r.a}})))});
+$('#ss-btn').addEventListener('click',handleSS);
+$('#cp-btn').addEventListener('click',copyRes);
+initDisc();initSB();
+buildCF('cft');
+applyL();
+}
+if(doc.readyState==='loading'){doc.addEventListener('DOMContentLoaded',initApp)}else{initApp()}
+})();
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script async src="https://mc.yandex.ru/metrika/tag.js"></script>
+<script>(function(){try{if(typeof ym==='function')ym(48008783,'init',{webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true})}catch(e){}})();</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/48008783" style="position:absolute;left:-9999px" alt=""/></div></noscript>
+</body>
+</html>
